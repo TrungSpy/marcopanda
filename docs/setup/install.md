@@ -12,6 +12,7 @@ yum update
 http://weblabo.oscasierra.net/centos7-php56-install/
 
 実行コマンド
+
     yum -y install epel-release
     cd /etc/yum.repos.d
     wget http://rpms.famillecollet.com/enterprise/remi.repo
