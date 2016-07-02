@@ -81,6 +81,79 @@
   },
   {
     "type": "post",
+    "url": "/article/like",
+    "title": "",
+    "version": "0.1.0",
+    "name": "_article_like",
+    "group": "article",
+    "description": "<p>旅行誌にいいねする</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "article_id",
+            "description": "<p>旅行誌ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "user_uuid",
+            "description": "<p>ユーザUUID。匿名の場合いいねを付けれない</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "error",
+            "description": "<p>エラーコード</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": true,
+            "field": "message",
+            "description": "<p>エラーメッセージ</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n}",
+          "type": "json"
+        },
+        {
+          "title": "ArticleNotExist-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"ArticleNotExist\",\n    \"message\": [\n        \"旅行誌が存在しません\"\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "UserNotExist-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"UserNotExist\",\n    \"message\": [\n        \"ユーザが存在しません\"\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "RepeatLike-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"RepeatLike\",\n    \"message\": [\n        \"ユーザが既にいいねをしました\"\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "marcopanda/article.rb",
+    "groupTitle": "article"
+  },
+  {
+    "type": "post",
     "url": "/article/post",
     "title": "",
     "version": "0.1.0",
@@ -251,6 +324,91 @@
   },
   {
     "type": "post",
+    "url": "/article/ranking",
+    "title": "",
+    "version": "0.1.0",
+    "name": "_article_ranking",
+    "group": "article",
+    "description": "<p>旅行誌に星を付ける</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "article_id",
+            "description": "<p>旅行誌ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "user_uuid",
+            "description": "<p>ユーザUUID。匿名の場合いいねを付けれない</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "star",
+            "description": "<p>星数</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "error",
+            "description": "<p>エラーコード</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": true,
+            "field": "message",
+            "description": "<p>エラーメッセージ</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n}",
+          "type": "json"
+        },
+        {
+          "title": "ArticleNotExist-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"ArticleNotExist\",\n    \"message\": [\n        \"旅行誌が存在しません\"\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "UserNotExist-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"UserNotExist\",\n    \"message\": [\n        \"ユーザが存在しません\"\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "StarOverLimit-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"StarOverLimit\",\n    \"message\": [\n        \"付けれない星数\"\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "RepeatRanking-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"RepeatLike\",\n    \"message\": [\n        \"ユーザが既に評価しました\"\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "marcopanda/article.rb",
+    "groupTitle": "article"
+  },
+  {
+    "type": "post",
     "url": "/article/search",
     "title": "",
     "version": "0.1.0",
@@ -260,6 +418,13 @@
     "parameter": {
       "fields": {
         "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "user_uuid",
+            "description": "<p>ユーザID（ログインしている場合必須）</p>"
+          },
           {
             "group": "Parameter",
             "type": "Number",
@@ -613,6 +778,13 @@
     "parameter": {
       "fields": {
         "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "user_uuid",
+            "description": "<p>ユーザID（ログインしている場合必須）</p>"
+          },
           {
             "group": "Parameter",
             "type": "Number",

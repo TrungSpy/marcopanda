@@ -7,6 +7,7 @@
 
 @apiDescription 地図検索。
 
+@apiParam {String} [user_uuid] ユーザID（ログインしている場合必須）
 @apiParam {Number} [longitude] 経度（現在地から検索する場合必須）
 @apiParam {Number} [latitude] 緯度（現在地から検索する場合必須）
 @apiParam {Number} [zoom] 拡大倍数（現在地から検索する場合必須）
