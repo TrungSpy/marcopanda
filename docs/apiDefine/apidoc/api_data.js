@@ -308,10 +308,10 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "File[]",
+            "type": "Number[]",
             "optional": true,
-            "field": "image_file",
-            "description": "<p>画像投稿（複数枚可能）</p>"
+            "field": "multimedia_id",
+            "description": "<p>ファイルID（複数枚可能）</p>"
           },
           {
             "group": "Parameter",
