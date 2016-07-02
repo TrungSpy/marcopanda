@@ -39,42 +39,6 @@ function main() {
             $handle = fopen($output_file_path, "a+");
             fwrite($handle, "=begin\n");
             fwrite($handle, $contents. "\n");
-            if($apiName != "/init" && $apiName != "/user/password/active") { // 初期化API以外、UUIDNotExistの共通レスポンスを追加
-                fwrite($handle, <<<EOF
-
-@apiSuccessExample UUIDNotExist-Response:
-    HTTP/1.1 200 OK
-    {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "UUIDNotExist",
-            "message": [
-                "UUIDが登録されていません。アプリを再起動してください。"
-            ]
-        }
-    }
-EOF
-);
-            }
-            fwrite($handle, <<<EOF
-
-@apiSuccessExample Maintenance-Response:
-    HTTP/1.1 200 OK
-    {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "MAINTENANCE",
-            "message": [
-                "システムメンテナンス中。時間を空けて再度ご利用ください。"
-            ]
-        }
-    }
-EOF
-);
             fwrite($handle, "=end\n");
             fwrite($handle, "def ". $apiName. "\nend\n");
             fclose($handle);
