@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PostController.h
 //  marcopandaios
 //
 //  Created by kawa on 2016/07/02.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
-
+@interface PostController : UIViewController
 
 @end
-

@@ -15,6 +15,13 @@
 		5214F6DC1D275FDE00ACC644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5214F6DA1D275FDE00ACC644 /* LaunchScreen.storyboard */; };
 		5214F6E51D27636000ACC644 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5214F6E41D27636000ACC644 /* MapKit.framework */; };
 		5214F6EA1D27684200ACC644 /* AFNetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F6E91D27684200ACC644 /* AFNetHelper.m */; };
+		5214F6F01D277DED00ACC644 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F6EF1D277DED00ACC644 /* MapController.m */; };
+		5214F6F31D277E2F00ACC644 /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F6F21D277E2F00ACC644 /* PostController.m */; };
+		5214F6FD1D27822700ACC644 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F6FC1D27822700ACC644 /* MenuCell.m */; };
+		5214F7081D2785B000ACC644 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F7071D2785B000ACC644 /* MenuHeader.m */; };
+		52B044601D27968B001F55C5 /* SideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B0445F1D27968B001F55C5 /* SideMenu.m */; };
+		52B044631D27971E001F55C5 /* PostListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044621D27971E001F55C5 /* PostListController.m */; };
+		52B0446A1D279C26001F55C5 /* TabMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044691D279C26001F55C5 /* TabMenu.m */; };
 		E1F80131AED5EB8BB13786AF /* libPods-marcopandaios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +40,21 @@
 		5214F6E41D27636000ACC644 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5214F6E81D27684200ACC644 /* AFNetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetHelper.h; sourceTree = "<group>"; };
 		5214F6E91D27684200ACC644 /* AFNetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetHelper.m; sourceTree = "<group>"; };
+		5214F6EE1D277DED00ACC644 /* MapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapController.h; path = view/MapController.h; sourceTree = "<group>"; };
+		5214F6EF1D277DED00ACC644 /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapController.m; path = view/MapController.m; sourceTree = "<group>"; };
+		5214F6F11D277E2F00ACC644 /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostController.h; path = view/PostController.h; sourceTree = "<group>"; };
+		5214F6F21D277E2F00ACC644 /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostController.m; path = view/PostController.m; sourceTree = "<group>"; };
+		5214F6FB1D27822700ACC644 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuCell.h; path = view/parts/MenuCell.h; sourceTree = "<group>"; };
+		5214F6FC1D27822700ACC644 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuCell.m; path = view/parts/MenuCell.m; sourceTree = "<group>"; };
+		5214F7011D27830600ACC644 /* marcopandaios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "marcopandaios-Prefix.pch"; sourceTree = "<group>"; };
+		5214F7061D2785B000ACC644 /* MenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuHeader.h; path = view/parts/MenuHeader.h; sourceTree = "<group>"; };
+		5214F7071D2785B000ACC644 /* MenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuHeader.m; path = view/parts/MenuHeader.m; sourceTree = "<group>"; };
+		52B0445E1D27968B001F55C5 /* SideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMenu.h; path = view/parts/SideMenu.h; sourceTree = "<group>"; };
+		52B0445F1D27968B001F55C5 /* SideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMenu.m; path = view/parts/SideMenu.m; sourceTree = "<group>"; };
+		52B044611D27971E001F55C5 /* PostListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostListController.h; path = view/PostListController.h; sourceTree = "<group>"; };
+		52B044621D27971E001F55C5 /* PostListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostListController.m; path = view/PostListController.m; sourceTree = "<group>"; };
+		52B044681D279C26001F55C5 /* TabMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabMenu.h; path = view/parts/TabMenu.h; sourceTree = "<group>"; };
+		52B044691D279C26001F55C5 /* TabMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabMenu.m; path = view/parts/TabMenu.m; sourceTree = "<group>"; };
 		A71C2E884F32E45EA3C37DBA /* Pods-marcopandaios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marcopandaios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-marcopandaios/Pods-marcopandaios.debug.xcconfig"; sourceTree = "<group>"; };
 		AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-marcopandaios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,7 +102,8 @@
 		5214F6CB1D275FDE00ACC644 /* marcopandaios */ = {
 			isa = PBXGroup;
 			children = (
-				5214F6E71D27684200ACC644 /* net */,
+				5214F6EC1D2777D500ACC644 /* view */,
+				5214F6EB1D27777B00ACC644 /* common */,
 				5214F6CF1D275FDE00ACC644 /* AppDelegate.h */,
 				5214F6D01D275FDE00ACC644 /* AppDelegate.m */,
 				5214F6D21D275FDE00ACC644 /* ViewController.h */,
@@ -98,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				5214F6CD1D275FDE00ACC644 /* main.m */,
+				5214F7011D27830600ACC644 /* marcopandaios-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -119,6 +143,43 @@
 			);
 			name = net;
 			path = common/net;
+			sourceTree = "<group>";
+		};
+		5214F6EB1D27777B00ACC644 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				5214F6E71D27684200ACC644 /* net */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		5214F6EC1D2777D500ACC644 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5214F6ED1D2777DF00ACC644 /* parts */,
+				5214F6EE1D277DED00ACC644 /* MapController.h */,
+				5214F6EF1D277DED00ACC644 /* MapController.m */,
+				52B044611D27971E001F55C5 /* PostListController.h */,
+				52B044621D27971E001F55C5 /* PostListController.m */,
+				5214F6F11D277E2F00ACC644 /* PostController.h */,
+				5214F6F21D277E2F00ACC644 /* PostController.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		5214F6ED1D2777DF00ACC644 /* parts */ = {
+			isa = PBXGroup;
+			children = (
+				52B0445E1D27968B001F55C5 /* SideMenu.h */,
+				52B0445F1D27968B001F55C5 /* SideMenu.m */,
+				5214F6FB1D27822700ACC644 /* MenuCell.h */,
+				5214F6FC1D27822700ACC644 /* MenuCell.m */,
+				5214F7061D2785B000ACC644 /* MenuHeader.h */,
+				5214F7071D2785B000ACC644 /* MenuHeader.m */,
+				52B044681D279C26001F55C5 /* TabMenu.h */,
+				52B044691D279C26001F55C5 /* TabMenu.m */,
+			);
+			name = parts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,9 +307,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5214F6D41D275FDE00ACC644 /* ViewController.m in Sources */,
+				52B044601D27968B001F55C5 /* SideMenu.m in Sources */,
+				5214F7081D2785B000ACC644 /* MenuHeader.m in Sources */,
 				5214F6D11D275FDE00ACC644 /* AppDelegate.m in Sources */,
+				5214F6FD1D27822700ACC644 /* MenuCell.m in Sources */,
+				52B0446A1D279C26001F55C5 /* TabMenu.m in Sources */,
+				5214F6F01D277DED00ACC644 /* MapController.m in Sources */,
+				5214F6F31D277E2F00ACC644 /* PostController.m in Sources */,
 				5214F6EA1D27684200ACC644 /* AFNetHelper.m in Sources */,
 				5214F6CE1D275FDE00ACC644 /* main.m in Sources */,
+				52B044631D27971E001F55C5 /* PostListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +370,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "marcopandaios/marcopandaios-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -345,6 +414,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "marcopandaios/marcopandaios-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -363,6 +433,8 @@
 			baseConfigurationReference = A71C2E884F32E45EA3C37DBA /* Pods-marcopandaios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "marcopandaios/marcopandaios-Prefix.pch";
 				INFOPLIST_FILE = marcopandaios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -376,6 +448,8 @@
 			baseConfigurationReference = 1C744367231C8DD04ED7BF70 /* Pods-marcopandaios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "marcopandaios/marcopandaios-Prefix.pch";
 				INFOPLIST_FILE = marcopandaios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

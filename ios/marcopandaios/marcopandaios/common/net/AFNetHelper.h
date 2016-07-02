@@ -5,7 +5,6 @@
 //  Copyright © 2016年 magicfor. All rights reserved.
 //
 
-
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager.h"
 
