@@ -19,6 +19,12 @@
 //現在経緯度
 @property (nonatomic,assign)CLLocationCoordinate2D cur_coordinate;
 
+//現在位置
+@property (nonatomic,strong)NSString *touch_adress;
+
+//現在経緯度
+@property (nonatomic,assign)CLLocationCoordinate2D touch_coordinate;
+
 //共有データモジュールを初期化
 +(MarcoPandaData *)sharedDataSource;
 @end

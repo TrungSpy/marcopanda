@@ -12,7 +12,7 @@
 static MarcoPandaData *datas;
 
 @implementation MarcoPandaData
-@synthesize cur_adress,cur_coordinate;
+@synthesize cur_adress,cur_coordinate,touch_adress,touch_coordinate;
 
 
 //共有データモジュールを初期化
@@ -32,7 +32,9 @@ static MarcoPandaData *datas;
     if(self)
     {
         self.cur_adress=@"";
-        self.cur_coordinate = kCLLocationCoordinate2DInvalid;// CLLocationCoordinate2DMake(35.634011, 139.716467);
+        self.cur_coordinate = kCLLocationCoordinate2DInvalid;
+        self.touch_adress=@"";
+        self.touch_coordinate = kCLLocationCoordinate2DInvalid;
     }
     return self;
 }

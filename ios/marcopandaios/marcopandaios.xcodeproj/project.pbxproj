@@ -23,6 +23,9 @@
 		52B044631D27971E001F55C5 /* PostListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044621D27971E001F55C5 /* PostListController.m */; };
 		52B0446A1D279C26001F55C5 /* TabMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044691D279C26001F55C5 /* TabMenu.m */; };
 		52B0446E1D27BD13001F55C5 /* MarcoPandaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B0446D1D27BD13001F55C5 /* MarcoPandaData.m */; };
+		52B044711D27D745001F55C5 /* MarcoPandaMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044701D27D745001F55C5 /* MarcoPandaMarker.m */; };
+		52B044731D27EA91001F55C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B044721D27EA91001F55C5 /* QuartzCore.framework */; };
+		52B044761D27EC6D001F55C5 /* MakerInfoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044751D27EC6D001F55C5 /* MakerInfoButton.m */; };
 		E1F80131AED5EB8BB13786AF /* libPods-marcopandaios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,11 @@
 		52B044691D279C26001F55C5 /* TabMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabMenu.m; path = view/parts/TabMenu.m; sourceTree = "<group>"; };
 		52B0446C1D27BD13001F55C5 /* MarcoPandaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MarcoPandaData.h; path = common/data/MarcoPandaData.h; sourceTree = "<group>"; };
 		52B0446D1D27BD13001F55C5 /* MarcoPandaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MarcoPandaData.m; path = common/data/MarcoPandaData.m; sourceTree = "<group>"; };
+		52B0446F1D27D745001F55C5 /* MarcoPandaMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MarcoPandaMarker.h; path = view/parts/MarcoPandaMarker.h; sourceTree = "<group>"; };
+		52B044701D27D745001F55C5 /* MarcoPandaMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MarcoPandaMarker.m; path = view/parts/MarcoPandaMarker.m; sourceTree = "<group>"; };
+		52B044721D27EA91001F55C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		52B044741D27EC6D001F55C5 /* MakerInfoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MakerInfoButton.h; path = view/parts/MakerInfoButton.h; sourceTree = "<group>"; };
+		52B044751D27EC6D001F55C5 /* MakerInfoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MakerInfoButton.m; path = view/parts/MakerInfoButton.m; sourceTree = "<group>"; };
 		A71C2E884F32E45EA3C37DBA /* Pods-marcopandaios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marcopandaios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-marcopandaios/Pods-marcopandaios.debug.xcconfig"; sourceTree = "<group>"; };
 		AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-marcopandaios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -67,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B044731D27EA91001F55C5 /* QuartzCore.framework in Frameworks */,
 				5214F6E51D27636000ACC644 /* MapKit.framework in Frameworks */,
 				E1F80131AED5EB8BB13786AF /* libPods-marcopandaios.a in Frameworks */,
 			);
@@ -132,6 +141,7 @@
 		5214F6E31D27636000ACC644 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52B044721D27EA91001F55C5 /* QuartzCore.framework */,
 				5214F6E41D27636000ACC644 /* MapKit.framework */,
 				AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */,
 			);
@@ -182,6 +192,10 @@
 				5214F7071D2785B000ACC644 /* MenuHeader.m */,
 				52B044681D279C26001F55C5 /* TabMenu.h */,
 				52B044691D279C26001F55C5 /* TabMenu.m */,
+				52B0446F1D27D745001F55C5 /* MarcoPandaMarker.h */,
+				52B044701D27D745001F55C5 /* MarcoPandaMarker.m */,
+				52B044741D27EC6D001F55C5 /* MakerInfoButton.h */,
+				52B044751D27EC6D001F55C5 /* MakerInfoButton.m */,
 			);
 			name = parts;
 			sourceTree = "<group>";
@@ -327,9 +341,11 @@
 				52B0446A1D279C26001F55C5 /* TabMenu.m in Sources */,
 				5214F6F01D277DED00ACC644 /* MapController.m in Sources */,
 				5214F6F31D277E2F00ACC644 /* PostController.m in Sources */,
+				52B044711D27D745001F55C5 /* MarcoPandaMarker.m in Sources */,
 				5214F6EA1D27684200ACC644 /* AFNetHelper.m in Sources */,
 				5214F6CE1D275FDE00ACC644 /* main.m in Sources */,
 				52B044631D27971E001F55C5 /* PostListController.m in Sources */,
+				52B044761D27EC6D001F55C5 /* MakerInfoButton.m in Sources */,
 				52B0446E1D27BD13001F55C5 /* MarcoPandaData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
