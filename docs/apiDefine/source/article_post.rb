@@ -16,8 +16,7 @@
 @apiParam {Number} [cost_id] コストID。spot_idがNULLの場合必須。1:¥0 2:¥1〜¥1,000 3:¥1,001〜¥2,000 4:¥2,001〜¥5,000 5:¥5,001〜¥10,000 6:¥10,001〜
 @apiParam {File[]} [image_file] 画像投稿（複数枚可能）
 @apiParam {String} [article_text] 投稿文書
-@apiParam {String} text_language_code 投稿文書言語（iso15924）
-@apiParam {Number} post_timestamp 投稿時タイムスタンプ
+@apiParam {String} [text_language_code] 投稿文書言語（iso15924）
 
 @apiSuccess {String} [error] エラーコード
 @apiSuccess {String[]} [message] エラーメッセージ
