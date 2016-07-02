@@ -61,3 +61,20 @@ http://api.marcopanda.dreamsfor.com/info.php
 
 ## 必要なミドルウェアをインストール
 yum install git
+
+# Google API KEY取得
+- Google Maps APIs
+https://developers.google.com/maps/documentation/
+
+サーバーのIPアドレスをGoogle APIのコンソール画面に登録する
+
+- Google Maps API呼び出しを試す
+https://maps.googleapis.com/maps/api/geocode/json?address=roppongi&key=YOUR_API_KEY
+
+https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
+
+上記APIをサーバー側で
+
+curl [url]
+
+で実行して、結果が帰ってくることを確認する。

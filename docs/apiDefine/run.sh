@@ -76,7 +76,7 @@ function convert_http_method_and_url($contents) {
         if(isset($matches2[1])) {
             $url = $matches2[1];
             //$api_title = substr($matches[2], strpos($url, $matches[2]) + strlen($url));
-            $replace_to_row = "@api {post} /v1/rpc ". $apiName;
+            $replace_to_row = "@api {post} ". $apiName;
             $contents = str_replace($matches[0], $replace_to_row, $contents);
         }
     }

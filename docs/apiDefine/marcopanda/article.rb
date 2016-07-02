@@ -1,5 +1,5 @@
 =begin
-@api {post} /v1/rpc /article/post
+@api {post} /article/post
 @apiVersion 0.1.0
 @apiName /article/post
 @apiGroup article

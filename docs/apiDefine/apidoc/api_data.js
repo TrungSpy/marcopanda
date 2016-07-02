@@ -1,8 +1,88 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "/v1/rpc",
-    "title": "/article/post",
+    "url": "/address/search",
+    "title": "",
+    "version": "0.1.0",
+    "name": "_address_search",
+    "group": "address",
+    "description": "<p>住所検索</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "location_name",
+            "description": "<p>地名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "text_language_code",
+            "description": "<p>検索文字言語（iso15924）</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "error",
+            "description": "<p>エラーコード</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "message",
+            "description": "<p>エラーメッセージ</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "results",
+            "description": "<p>Google APIから返ってきた検索結果（status=OKの場合）</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"jsonrpc\": \"2.0\",\n    \"id\": \"1\",\n    \"result\":\n    {\n        \"id\": 2343\n    }\n\n}",
+          "type": "json"
+        },
+        {
+          "title": "NoResults-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"jsonrpc\": \"2.0\",\n    \"id\": \"1\",\n    \"result\":\n    {\n        \"error\": \"NoResults\",\n        \"message\": [\n            \"検索結果が見つかりません\"\n        ]\n    }\n\n}",
+          "type": "json"
+        },
+        {
+          "title": "SearchServiceTemporarilyUnavailable-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"jsonrpc\": \"2.0\",\n    \"id\": \"1\",\n    \"result\":\n    {\n        \"error\": \"SearchServiceTemporarilyUnavailable\",\n        \"message\": [\n            \"検索サービスが一時的に利用できません。時間を空けて再度ご利用ください。\"\n        ]\n    }\n\n}",
+          "type": "json"
+        },
+        {
+          "title": "AddressOverUpperLimit-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"jsonrpc\": \"2.0\",\n    \"id\": \"1\",\n    \"result\":\n    {\n        \"error\": \"AddressOverUpperLimit\",\n        \"message\": [\n            \"検索文字が文字数上限に超えました\"\n        ]\n    }\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "marcopanda/address.rb",
+    "groupTitle": "address"
+  },
+  {
+    "type": "post",
+    "url": "/article/post",
+    "title": "",
     "version": "0.1.0",
     "name": "_article_post",
     "group": "article",
@@ -171,8 +251,8 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/v1/rpc",
-    "title": "/user/regist",
+    "url": "/user/regist",
+    "title": "",
     "version": "0.1.0",
     "name": "_user_regist",
     "group": "user",

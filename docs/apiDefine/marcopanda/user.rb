@@ -1,5 +1,5 @@
 =begin
-@api {post} /v1/rpc /user/regist
+@api {post} /user/regist
 @apiVersion 0.1.0
 @apiName /user/regist
 @apiGroup user
