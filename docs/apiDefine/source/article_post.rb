@@ -19,8 +19,8 @@
 @apiParam {String} text_language_code 投稿文書言語（iso15924）
 @apiParam {Number} post_timestamp 投稿時タイムスタンプ
 
-@apiSuccess {String} error エラーコード
-@apiSuccess {String[]} message エラーメッセージ
+@apiSuccess {String} [error] エラーコード
+@apiSuccess {String[]} [message] エラーメッセージ
 @apiSuccess {Number} article_id ID
 
 @apiSuccessExample Success-Response:
@@ -30,7 +30,7 @@
     }
 
 @apiSuccessExample LongitudeNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "LongitudeNotExist",
         "message": [
@@ -39,7 +39,7 @@
     }
 
 @apiSuccessExample LatitudeNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "LatitudeNotExist",
         "message": [
@@ -48,7 +48,7 @@
     }
 
 @apiSuccessExample UserNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "UserNotExist",
         "message": [
@@ -57,7 +57,7 @@
     }
 
 @apiSuccessExample CategoryNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "CategoryNotExist",
         "message": [
@@ -66,7 +66,7 @@
     }
 
 @apiSuccessExample CostNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "CostNotExist",
         "message": [
@@ -75,7 +75,7 @@
     }
 
 @apiSuccessExample ArticleTextOverUpperLimit-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "ArticleTextOverUpperLimit",
         "message": [
@@ -84,7 +84,7 @@
     }
 
 @apiSuccessExample NicknameOverUpperLimit-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "NicknameOverUpperLimit",
         "message": [

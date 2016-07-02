@@ -13,18 +13,18 @@
 @apiParam {String} [country] 国名
 @apiParam {File} [image_file] ユーザアイコン
 
-@apiSuccess {String} error エラーコード
-@apiSuccess {String[]} message エラーメッセージ
+@apiSuccess {String} [error] エラーコード
+@apiSuccess {String[]} [message] エラーメッセージ
 @apiSuccess {String} user_uuid ユーザUUID。40桁ランダム文字
 
 @apiSuccessExample Success-Response:
     HTTP/1.1 200 OK
     {
-        "id": 2343
+        "user_uuid": "5m0rjnZo7F2v3cx7GDj7WO5PmLcxSHSHlEtF0hNE"
     }
 
 @apiSuccessExample ComeFromNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "ComeFromNotExist",
         "message": [
@@ -33,7 +33,7 @@
     }
 
 @apiSuccessExample UserExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "UserExist",
         "message": [
@@ -42,7 +42,7 @@
     }
 
 @apiSuccessExample GenerationNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
         "error": "GenerationNotExist",
         "message": [

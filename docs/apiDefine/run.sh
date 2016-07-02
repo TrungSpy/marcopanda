@@ -53,7 +53,7 @@ function main() {
 function convert_to_rpc2($contents) {
     $contents = convert_http_method_and_url($contents);
     $contents = convert_apiExample($contents);
-    $contents = convertResponse($contents);
+    //$contents = convertResponse($contents);
     
     return $contents;
 }

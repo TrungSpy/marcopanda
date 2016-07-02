@@ -14,63 +14,43 @@
 @apiParam {String} [country] 国名
 @apiParam {File} [image_file] ユーザアイコン
 
-@apiSuccess {String} error エラーコード
-@apiSuccess {String[]} message エラーメッセージ
+@apiSuccess {String} [error] エラーコード
+@apiSuccess {String[]} [message] エラーメッセージ
 @apiSuccess {String} user_uuid ユーザUUID。40桁ランダム文字
 
 @apiSuccessExample Success-Response:
     HTTP/1.1 200 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "id": 2343
-        }
-
+        "user_uuid": "5m0rjnZo7F2v3cx7GDj7WO5PmLcxSHSHlEtF0hNE"
     }
+
 @apiSuccessExample ComeFromNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "ComeFromNotExist",
-            "message": [
-                "SNSが存在しません"
-            ]
-        }
-
+        "error": "ComeFromNotExist",
+        "message": [
+            "SNSが存在しません"
+        ]
     }
+
 @apiSuccessExample UserExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "UserExist",
-            "message": [
-                "ユーザが既に存在しました"
-            ]
-        }
-
+        "error": "UserExist",
+        "message": [
+            "ユーザが既に存在しました"
+        ]
     }
+
 @apiSuccessExample GenerationNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "GenerationNotExist",
-            "message": [
-                "年代が存在しません"
-            ]
-        }
-
+        "error": "GenerationNotExist",
+        "message": [
+            "年代が存在しません"
+        ]
     }
+
 =end
 def /user/regist
 end

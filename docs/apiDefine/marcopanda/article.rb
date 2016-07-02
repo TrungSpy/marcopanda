@@ -20,119 +20,79 @@
 @apiParam {String} text_language_code 投稿文書言語（iso15924）
 @apiParam {Number} post_timestamp 投稿時タイムスタンプ
 
-@apiSuccess {String} error エラーコード
-@apiSuccess {String[]} message エラーメッセージ
+@apiSuccess {String} [error] エラーコード
+@apiSuccess {String[]} [message] エラーメッセージ
 @apiSuccess {Number} article_id ID
 
 @apiSuccessExample Success-Response:
     HTTP/1.1 200 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "id": 2343
-        }
-
+        "id": 2343
     }
+
 @apiSuccessExample LongitudeNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "LongitudeNotExist",
-            "message": [
-                "経度が存在しません"
-            ]
-        }
-
+        "error": "LongitudeNotExist",
+        "message": [
+            "経度が存在しません"
+        ]
     }
+
 @apiSuccessExample LatitudeNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "LatitudeNotExist",
-            "message": [
-                "経度が存在しません"
-            ]
-        }
-
+        "error": "LatitudeNotExist",
+        "message": [
+            "経度が存在しません"
+        ]
     }
+
 @apiSuccessExample UserNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "UserNotExist",
-            "message": [
-                "ユーザが存在しません"
-            ]
-        }
-
+        "error": "UserNotExist",
+        "message": [
+            "ユーザが存在しません"
+        ]
     }
+
 @apiSuccessExample CategoryNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "CategoryNotExist",
-            "message": [
-                "カテゴリが存在しません"
-            ]
-        }
-
+        "error": "CategoryNotExist",
+        "message": [
+            "カテゴリが存在しません"
+        ]
     }
+
 @apiSuccessExample CostNotExist-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "CostNotExist",
-            "message": [
-                "コストが存在しません"
-            ]
-        }
-
+        "error": "CostNotExist",
+        "message": [
+            "コストが存在しません"
+        ]
     }
+
 @apiSuccessExample ArticleTextOverUpperLimit-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "ArticleTextOverUpperLimit",
-            "message": [
-                "投稿テキストが文字数上限に超えました"
-            ]
-        }
-
+        "error": "ArticleTextOverUpperLimit",
+        "message": [
+            "投稿テキストが文字数上限に超えました"
+        ]
     }
+
 @apiSuccessExample NicknameOverUpperLimit-Response:
-    HTTP/1.1 200 OK
+    HTTP/1.1 400 OK
     {
-        "jsonrpc": "2.0",
-        "id": "1",
-        "result":
-        {
-            "error": "NicknameOverUpperLimit",
-            "message": [
-                "ニックネームは文字数上限に超えました"
-            ]
-        }
-
+        "error": "NicknameOverUpperLimit",
+        "message": [
+            "ニックネームは文字数上限に超えました"
+        ]
     }
+
 =end
 def /article/post
 end
