@@ -10,6 +10,8 @@
  * @link       http://fuelphp.com
  */
 
+use \Fuel\Core\Log;
+
 /**
  * The Article Controller.
  *
@@ -30,7 +32,8 @@ class Controller_Base extends Controller_Rest
 		// 認証処理などの共通処理を記述
 		\Lang::load('errors');
 		$php_input = file_get_contents('php://input');
-		self::$_JSON = json_decode($php_input);
+		//Log::warning(var_export($php_input, true));
+		self::$_JSON = json_decode($php_input, true);
 	}
 
 	public function after($response)

@@ -60,6 +60,23 @@ class Controller_Article extends Controller_Base
 	 * @access  public
 	 * @return  Response
 	 */
+	public function post_fileupload()
+	{
+		try {
+			$results = Articles::receive_upload();
+
+			return $this->response($results, 200);
+		} catch (\MarcoPandaException $e) {
+			$this->error($e);
+		}
+	}
+
+	/**
+	 * The basic welcome message
+	 *
+	 * @access  public
+	 * @return  Response
+	 */
 	public function post_post()
 	{
 		try {
