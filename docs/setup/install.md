@@ -93,6 +93,12 @@ Require ip [確認君で取得したグローバルIP]
 
 systemctl restart httpd.service
 
+vi /etc/phpMyAdmin/config.inc.php
+
+$cfg['Servers'][$i]['host'] = 'localhost';
+
+にlocalhostの部分を実際のRDSホストに変更する。
+
 http://api.marcopanda.dreamsfor.com/phpmyadmin/
 http://api.marcopanda.dreamsfor.com/phpmyadmin/setup/
 で確認する。
