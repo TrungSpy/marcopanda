@@ -1293,5 +1293,68 @@ define({ "api": [
     },
     "filename": "marcopanda/user.rb",
     "groupTitle": "user"
+  },
+  {
+    "type": "Post",
+    "url": "/user/uuid_regist",
+    "title": "ユーザUUID登録（プレゼン用）",
+    "version": "0.1.0",
+    "name": "_user_uuid_regist",
+    "group": "user",
+    "description": "<p>ユーザUUID登録</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "user_uuid",
+            "description": "<p>ユーザUUID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "error",
+            "description": "<p>エラーコード</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": true,
+            "field": "message",
+            "description": "<p>エラーメッセージ</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "user_uuid",
+            "description": "<p>ユーザUUID。もらったデータをそのまま返す</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"user_uuid\": \"5m0rjnZo7F2v3cx7GDj7WO5PmLcxSHSHlEtF0hNE\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "UserExist-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"UserExist\",\n    \"message\": [\n        \"ユーザが既に存在しました\"\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "marcopanda/user.rb",
+    "groupTitle": "user"
   }
 ] });
