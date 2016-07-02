@@ -13,9 +13,13 @@
 		5214F6D71D275FDE00ACC644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5214F6D51D275FDE00ACC644 /* Main.storyboard */; };
 		5214F6D91D275FDE00ACC644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5214F6D81D275FDE00ACC644 /* Assets.xcassets */; };
 		5214F6DC1D275FDE00ACC644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5214F6DA1D275FDE00ACC644 /* LaunchScreen.storyboard */; };
+		5214F6E51D27636000ACC644 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5214F6E41D27636000ACC644 /* MapKit.framework */; };
+		5214F6EA1D27684200ACC644 /* AFNetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F6E91D27684200ACC644 /* AFNetHelper.m */; };
+		E1F80131AED5EB8BB13786AF /* libPods-marcopandaios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C744367231C8DD04ED7BF70 /* Pods-marcopandaios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marcopandaios.release.xcconfig"; path = "Pods/Target Support Files/Pods-marcopandaios/Pods-marcopandaios.release.xcconfig"; sourceTree = "<group>"; };
 		5214F6C91D275FDE00ACC644 /* marcopandaios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marcopandaios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5214F6CD1D275FDE00ACC644 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5214F6CF1D275FDE00ACC644 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +30,11 @@
 		5214F6D81D275FDE00ACC644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5214F6DB1D275FDE00ACC644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5214F6DD1D275FDE00ACC644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5214F6E41D27636000ACC644 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5214F6E81D27684200ACC644 /* AFNetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetHelper.h; sourceTree = "<group>"; };
+		5214F6E91D27684200ACC644 /* AFNetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetHelper.m; sourceTree = "<group>"; };
+		A71C2E884F32E45EA3C37DBA /* Pods-marcopandaios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marcopandaios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-marcopandaios/Pods-marcopandaios.debug.xcconfig"; sourceTree = "<group>"; };
+		AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-marcopandaios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +42,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5214F6E51D27636000ACC644 /* MapKit.framework in Frameworks */,
+				E1F80131AED5EB8BB13786AF /* libPods-marcopandaios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47042B0ACBCB7A75BB6E7582 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A71C2E884F32E45EA3C37DBA /* Pods-marcopandaios.debug.xcconfig */,
+				1C744367231C8DD04ED7BF70 /* Pods-marcopandaios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5214F6C01D275FDE00ACC644 = {
 			isa = PBXGroup;
 			children = (
 				5214F6CB1D275FDE00ACC644 /* marcopandaios */,
 				5214F6CA1D275FDE00ACC644 /* Products */,
+				5214F6E31D27636000ACC644 /* Frameworks */,
+				47042B0ACBCB7A75BB6E7582 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +80,7 @@
 		5214F6CB1D275FDE00ACC644 /* marcopandaios */ = {
 			isa = PBXGroup;
 			children = (
+				5214F6E71D27684200ACC644 /* net */,
 				5214F6CF1D275FDE00ACC644 /* AppDelegate.h */,
 				5214F6D01D275FDE00ACC644 /* AppDelegate.m */,
 				5214F6D21D275FDE00ACC644 /* ViewController.h */,
@@ -79,6 +102,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5214F6E31D27636000ACC644 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5214F6E41D27636000ACC644 /* MapKit.framework */,
+				AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5214F6E71D27684200ACC644 /* net */ = {
+			isa = PBXGroup;
+			children = (
+				5214F6E81D27684200ACC644 /* AFNetHelper.h */,
+				5214F6E91D27684200ACC644 /* AFNetHelper.m */,
+			);
+			name = net;
+			path = common/net;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5214F6E01D275FDE00ACC644 /* Build configuration list for PBXNativeTarget "marcopandaios" */;
 			buildPhases = (
+				46C32E240BE38E266BB2C65B /* 📦 Check Pods Manifest.lock */,
 				5214F6C51D275FDE00ACC644 /* Sources */,
 				5214F6C61D275FDE00ACC644 /* Frameworks */,
 				5214F6C71D275FDE00ACC644 /* Resources */,
+				BED00F245B1ECDBDA7545533 /* 📦 Embed Pods Frameworks */,
+				BB84831CE305D17A7E7F3D7F /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,6 +192,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		46C32E240BE38E266BB2C65B /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BB84831CE305D17A7E7F3D7F /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-marcopandaios/Pods-marcopandaios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BED00F245B1ECDBDA7545533 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-marcopandaios/Pods-marcopandaios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5214F6C51D275FDE00ACC644 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -154,6 +247,7 @@
 			files = (
 				5214F6D41D275FDE00ACC644 /* ViewController.m in Sources */,
 				5214F6D11D275FDE00ACC644 /* AppDelegate.m in Sources */,
+				5214F6EA1D27684200ACC644 /* AFNetHelper.m in Sources */,
 				5214F6CE1D275FDE00ACC644 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +360,7 @@
 		};
 		5214F6E11D275FDE00ACC644 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A71C2E884F32E45EA3C37DBA /* Pods-marcopandaios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = marcopandaios/Info.plist;
@@ -278,6 +373,7 @@
 		};
 		5214F6E21D275FDE00ACC644 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C744367231C8DD04ED7BF70 /* Pods-marcopandaios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = marcopandaios/Info.plist;
@@ -307,6 +403,7 @@
 				5214F6E21D275FDE00ACC644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
