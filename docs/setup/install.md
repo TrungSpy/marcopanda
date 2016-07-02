@@ -149,6 +149,8 @@ vi /etc/httpd/conf/httpd.conf
 
     Alias /apidefine /var/www/html/docs/apiDefine/doc
 
+    systemctl start httpd.service
+
 API定義書は下記のURLで見れる
 
 http://api.marcopanda.dreamsfor.com/apidefine/index.html
