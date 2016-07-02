@@ -139,6 +139,14 @@ vi /etc/httpd/conf/httpd.conf
 
     <Directory "/var/www/html/server/public">
 
+その配下の
+
+    AllowOverride None
+
+を下記に変更
+
+    AllowOverride All
+
 また下記を追加
 
     <Directory "/var/www/html/docs/apiDefine/doc">
