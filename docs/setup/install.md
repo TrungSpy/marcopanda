@@ -12,39 +12,33 @@ yum update
 http://weblabo.oscasierra.net/centos7-php56-install/
 
 実行コマンド
-yum -y install epel-release
+    yum -y install epel-release
+    cd /etc/yum.repos.d
+    wget http://rpms.famillecollet.com/enterprise/remi.repo
+    yum -y --enablerepo=remi,remi-php56 install httpd php php-common
+    systemctl enable httpd.service
+    systemctl start httpd.service
+    vi /var/www/html/info.php
 
-cd /etc/yum.repos.d
-
-wget http://rpms.famillecollet.com/enterprise/remi.repo
-
-yum -y --enablerepo=remi,remi-php56 install httpd php php-common
-
-systemctl enable httpd.service
-
-systemctl start httpd.service
-
-vi /var/www/html/info.php
-<?php
-phpinfo();
-?>
+    <?php
+        phpinfo();
+    ?>
 
 ## ファイアウォール設定
 デフォルトで22ポートしか空いていないので、httpとhttpsのポートを開放するように設定します。
 
 許可するポートを確認する
 
-firewall-cmd --list-all
+    firewall-cmd --list-all
 
 httpとhttpsポートを開放する
 
-firewall-cmd --permanent --add-service=http --add-service=https
-
-firewall-cmd --reload
+    firewall-cmd --permanent --add-service=http --add-service=https
+    firewall-cmd --reload
 
 許可するポートを確認する
 
-firewall-cmd --list-all
+    firewall-cmd --list-all
 
 http://47.90.38.52
 
@@ -60,7 +54,7 @@ DNSレコードの反映はすこし時間がかかりますが、
 http://api.marcopanda.dreamsfor.com/info.php
 
 ## 必要なミドルウェアをインストール
-yum install git
+    yum install git
 
 ## RDS開設
 - aliyunのコンソール画面にRDSのインスタンスを作る
@@ -70,56 +64,54 @@ yum install git
 
 ECSサーバーにmysqlクライアントインストール
 
-yum -y --enablerepo=remi,remi-php56 install mysql
+    yum -y --enablerepo=remi,remi-php56 install mysql
 
 RDSにmysqlログインできるか確認
 
-mysql -u [username] -p -h [host] [dbname]
+    mysql -u [username] -p -h [host] [dbname]
 
 ECSサーバーにphpmyadminインストール
 
-yum -y --enablerepo=remi,remi-php56 install phpMyAdmin
+    yum -y --enablerepo=remi,remi-php56 install phpMyAdmin
 
 IP確認君でグローバルIPを確認して、
 そのIPアドレスをphpmyadmin.confの設定ファイルに追加する
 
-vi /etc/httpd/conf.d/phpMyAdmin.conf
+    vi /etc/httpd/conf.d/phpMyAdmin.conf
 
-Require local
+    Require local
 
 の後ろに下記を追加する（２箇所）。
 
-Require ip [確認君で取得したグローバルIP]
+    Require ip [確認君で取得したグローバルIP]
 
-systemctl restart httpd.service
+    systemctl restart httpd.service
 
-vi /etc/phpMyAdmin/config.inc.php
+    vi /etc/phpMyAdmin/config.inc.php
 
-$cfg['Servers'][$i]['host'] = 'localhost';
+    $cfg['Servers'][$i]['host'] = 'localhost';
 
 にlocalhostの部分を実際のRDSホストに変更する。
 
 http://api.marcopanda.dreamsfor.com/phpmyadmin/
-http://api.marcopanda.dreamsfor.com/phpmyadmin/setup/
+
 で確認する。
-
-http://api.marcopanda.dreamsfor.com/phpmyadmin/setup/
-画面に設定する
-
 
 # Google API KEY取得
 - Google Maps APIs
+
 https://developers.google.com/maps/documentation/
 
 サーバーのIPアドレスをGoogle APIのコンソール画面に登録する
 
 - Google Maps API呼び出しを試す
+
 https://maps.googleapis.com/maps/api/geocode/json?address=roppongi&key=YOUR_API_KEY
 
 https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
 
 上記APIをサーバー側で
 
-curl [url]
+    curl [url]
 
 で実行して、結果が帰ってくることを確認する。
