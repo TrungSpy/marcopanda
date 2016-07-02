@@ -17,6 +17,15 @@ http://weblabo.oscasierra.net/centos7-php56-install/
     cd /etc/yum.repos.d
     wget http://rpms.famillecollet.com/enterprise/remi.repo
     yum -y --enablerepo=remi,remi-php56 install httpd php php-common
+
+    vi /etc/php.ini
+
+    ;data.timezone = 
+
+    を下記に変更
+
+    date.timezone = Asia/Tokyo
+
     systemctl enable httpd.service
     systemctl start httpd.service
     vi /var/www/html/info.php
@@ -24,6 +33,7 @@ http://weblabo.oscasierra.net/centos7-php56-install/
     <?php
         phpinfo();
     ?>
+
 
 ## ファイアウォール設定
 デフォルトで22ポートしか空いていないので、httpとhttpsのポートを開放するように設定します。
@@ -98,6 +108,55 @@ http://api.marcopanda.dreamsfor.com/phpmyadmin/
 
 で確認する。
 
+## fuelphpインストール
+
+### ダウンロード
+
+http://fuelphp.com/
+から最新版fuelphpをダウンロードして、
+gitに保管して、サーバーでgit pullする（apache権限）。
+
+### httpd設定
+
+vi /etc/httpd/conf/httpd.conf
+
+    DocumentRoot "/var/www/html"
+
+を下記に変更
+
+    DocumentRoot "/var/www/html/server/public"
+    SetEnv FUEL_ENV production
+
+また
+
+    <Directory "/var/www/html">
+	
+を下記に変更
+
+    <Directory "/var/www/html/server/public">
+
+また下記を追加
+
+    <Directory "/var/www/html/docs/apiDefine/doc">
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    Alias /apidefine /var/www/html/docs/apiDefine/doc
+
+API定義書は下記のURLで見れる
+
+http://api.marcopanda.dreamsfor.com/apidefine/index.html
+
+### composer更新
+
+    cd /var/www/html/server/
+    php composer.phar self-update
+    php composer.phar update
+
+
+
 # Google API KEY取得
 - Google Maps APIs
 
@@ -115,4 +174,4 @@ https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&ke
 
     curl [url]
 
-で実行して、結果が帰ってくることを確認する。
+で実行して、結果が返ってくることを確認する。
