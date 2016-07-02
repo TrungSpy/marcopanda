@@ -114,7 +114,11 @@ http://api.marcopanda.dreamsfor.com/phpmyadmin/
 
 http://fuelphp.com/
 から最新版fuelphpをダウンロードして、
-gitに保管して、サーバーでgit pullする（apache権限）。
+gitに保管して、サーバーでに下記のコマンドでgit pullする（apache権限）。
+
+    su - /bin/bash apache
+    cd /var/www/html
+    git pull
 
 ### httpd設定
 
