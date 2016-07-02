@@ -1,5 +1,5 @@
 =begin
-@api {post} /article/like
+@api {Post} /article/like 旅行誌にいいねする
 @apiVersion 0.1.0
 @apiName /article/like
 @apiGroup article
@@ -49,7 +49,7 @@
 def /article/like
 end
 =begin
-@api {post} /article/post
+@api {Post} /article/post 旅行誌投稿
 @apiVersion 0.1.0
 @apiName /article/post
 @apiGroup article
@@ -147,7 +147,7 @@ end
 def /article/post
 end
 =begin
-@api {post} /article/ranking
+@api {Post} /article/ranking 旅行誌に星を付ける
 @apiVersion 0.1.0
 @apiName /article/ranking
 @apiGroup article
@@ -207,13 +207,13 @@ end
 def /article/ranking
 end
 =begin
-@api {post} /article/search
+@api {Post} /article/search 旅行誌検索
 @apiVersion 0.1.0
 @apiName /article/search
 @apiGroup article
 @apiSampleRequest off
 
-@apiDescription 記事検索。
+@apiDescription 旅行誌検索。
 
 @apiParam {String} [user_uuid] ユーザID（ログインしている場合必須）
 @apiParam {Number} [longitude] 経度（現在地から検索する場合必須）

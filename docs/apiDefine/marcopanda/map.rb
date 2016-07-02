@@ -1,5 +1,5 @@
 =begin
-@api {post} /map/search
+@api {Post} /map/search 地図検索
 @apiVersion 0.1.0
 @apiName /map/search
 @apiGroup map

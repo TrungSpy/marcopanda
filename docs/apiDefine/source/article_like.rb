@@ -1,4 +1,4 @@
-@api {Post} /article 旅行誌
+@api {Post} /article/like 旅行誌にいいねする
 @apiVersion 0.1.0
 @apiName /article/like
 @apiGroup article

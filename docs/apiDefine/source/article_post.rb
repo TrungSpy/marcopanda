@@ -1,4 +1,4 @@
-@api {Post} /article 旅行誌
+@api {Post} /article/post 旅行誌投稿
 @apiVersion 0.1.0
 @apiName /article/post
 @apiGroup article

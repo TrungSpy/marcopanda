@@ -1,4 +1,4 @@
-@api {Post} /article 旅行誌
+@api {Post} /article/ranking 旅行誌に星を付ける
 @apiVersion 0.1.0
 @apiName /article/ranking
 @apiGroup article

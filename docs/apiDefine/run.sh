@@ -23,7 +23,7 @@ function main() {
         $path_parts = pathinfo($file_path);
         if($path_parts['extension'] == 'rb') {
             $contents = file_get_contents($file_path);
-            $contents = convert_to_rpc2($contents);
+            //$contents = convert_to_rpc2($contents);
             $apiGroup = "";
             $apiName = "";
             

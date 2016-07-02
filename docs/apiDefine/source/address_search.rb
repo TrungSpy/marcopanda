@@ -1,4 +1,4 @@
-@api {Post} /address 住所
+@api {Post} /address/search 住所検索
 @apiVersion 0.1.0
 @apiName /address/search
 @apiGroup address

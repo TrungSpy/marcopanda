@@ -1,8 +1,8 @@
 [
   {
-    "type": "post",
+    "type": "Post",
     "url": "/address/search",
-    "title": "",
+    "title": "住所検索",
     "version": "0.1.0",
     "name": "_address_search",
     "group": "address",
@@ -80,9 +80,9 @@
     "groupTitle": "address"
   },
   {
-    "type": "post",
+    "type": "Post",
     "url": "/article/like",
-    "title": "",
+    "title": "旅行誌にいいねする",
     "version": "0.1.0",
     "name": "_article_like",
     "group": "article",
@@ -153,9 +153,9 @@
     "groupTitle": "article"
   },
   {
-    "type": "post",
+    "type": "Post",
     "url": "/article/post",
-    "title": "",
+    "title": "旅行誌投稿",
     "version": "0.1.0",
     "name": "_article_post",
     "group": "article",
@@ -323,9 +323,9 @@
     "groupTitle": "article"
   },
   {
-    "type": "post",
+    "type": "Post",
     "url": "/article/ranking",
-    "title": "",
+    "title": "旅行誌に星を付ける",
     "version": "0.1.0",
     "name": "_article_ranking",
     "group": "article",
@@ -408,13 +408,13 @@
     "groupTitle": "article"
   },
   {
-    "type": "post",
+    "type": "Post",
     "url": "/article/search",
-    "title": "",
+    "title": "旅行誌検索",
     "version": "0.1.0",
     "name": "_article_search",
     "group": "article",
-    "description": "<p>記事検索。</p>",
+    "description": "<p>旅行誌検索。</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -768,9 +768,9 @@
     "groupTitle": "article"
   },
   {
-    "type": "post",
+    "type": "Post",
     "url": "/map/search",
-    "title": "",
+    "title": "地図検索",
     "version": "0.1.0",
     "name": "_map_search",
     "group": "map",
@@ -1058,9 +1058,9 @@
     "groupTitle": "map"
   },
   {
-    "type": "post",
+    "type": "Post",
     "url": "/user/regist",
-    "title": "",
+    "title": "ユーザ登録",
     "version": "0.1.0",
     "name": "_user_regist",
     "group": "user",

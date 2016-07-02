@@ -1,5 +1,5 @@
 =begin
-@api {post} /user/regist
+@api {Post} /user/regist ユーザ登録
 @apiVersion 0.1.0
 @apiName /user/regist
 @apiGroup user
