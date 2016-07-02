@@ -13,5 +13,9 @@ return array(
 							'message' => 'Some files upload failed'),
 	'errors.0006' => array('code' => 'NoContents',
 							'message' => 'No contents received'),
+	'errors.0007' => array('code' => 'UUIDNotExist',
+							'message' => 'UUID is neccesary'),
+	'errors.0008' => array('code' => 'UUIDExist',
+							'message' => 'UUID is already registed'),
 	
 );

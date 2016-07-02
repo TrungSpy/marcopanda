@@ -10,7 +10,7 @@
  * @link       http://fuelphp.com
  */
 
-use \Model\Articles;
+use \Model\Users;
 
 /**
  * The Article Controller.
@@ -21,7 +21,7 @@ use \Model\Articles;
  * @package  app
  * @extends  Controller
  */
-class Controller_Article extends Controller_Base
+class Controller_User extends Controller_Base
 {
 	public function before()
 	{
@@ -35,35 +35,15 @@ class Controller_Article extends Controller_Base
 	}
 
 	/**
-	 * The basic welcome message
-	 *
-	 * @access  public
-	 * @return  Response
-	 */
-	public function action_index()
-	{
-		 $list = array(
-            'foo' => Input::get('foo'),
-            'baz' => array(
-                1, 50, 219
-            ),
-            'empty' => null
-        );
-		$results = Articles::get_list( 10, 0);
-        //print_r($results);
-		return $this->response($results, 200);
-	}
-
-	/**
 	 * upload file
 	 *
 	 * @access  public
 	 * @return  Response
 	 */
-	public function post_fileupload()
+	public function post_uuid_regist()
 	{
 		try {
-			$results = Articles::receive_upload();
+			$results = Users::uuid_regist( self::$_JSON );
 
 			return $this->response($results, 200);
 		} catch (\MarcoPandaException $e) {

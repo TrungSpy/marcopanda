@@ -71,13 +71,9 @@ class Articles extends Base {
 					throw new \MarcoPandaException(2);
 				}
 			}
-			// self::upload_file();
-			// if(count(self::$uploaded_files_error) > 0) {
-			// 	throw new \MarcoPandaException(5);
-			// }
-			// if(count(self::$uploaded_files) == 0 && empty($data['article_text'])) {
-			// 	throw new \MarcoPandaException(6);
-			// }
+			if((!isset($data['multimedia_id']) || count($data['multimedia_id']) == 0) && empty($data['article_text'])) {
+				throw new \MarcoPandaException(6);
+			}
 		} catch(\Exception $e) {
 			throw $e;
 		}
