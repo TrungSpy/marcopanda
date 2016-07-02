@@ -10,6 +10,8 @@
  * @link       http://fuelphp.com
  */
 
+use \Model\Articles;
+
 /**
  * The Article Controller.
  *
@@ -19,8 +21,19 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_Article extends Controller_Rest
+class Controller_Article extends Controller_Base
 {
+	public function before()
+	{
+		parent::before();
+	}
+
+	public function after($response)
+	{
+		$response = parent::after($response); 
+		return $response;
+	}
+
 	/**
 	 * The basic welcome message
 	 *
@@ -36,9 +49,26 @@ class Controller_Article extends Controller_Rest
             ),
             'empty' => null
         );
-		$results = \Model\Articles::get_list( 10, 0);
+		$results = Articles::get_list( 10, 0);
         //print_r($results);
 		return $this->response($results, 200);
+	}
+
+	/**
+	 * The basic welcome message
+	 *
+	 * @access  public
+	 * @return  Response
+	 */
+	public function post_post()
+	{
+		try {
+			$results = Articles::regist( self::$_JSON );
+
+			return $this->response($results, 200);
+		} catch (\MarcoPandaException $e) {
+			$this->error($e);
+		}
 	}
 
 	/**
