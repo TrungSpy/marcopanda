@@ -33,10 +33,10 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Number",
+            "type": "String",
             "optional": true,
-            "field": "user_id",
-            "description": "<p>ユーザID。匿名の場合省略可能</p>"
+            "field": "user_uuid",
+            "description": "<p>ユーザUUID。匿名の場合省略可能</p>"
           },
           {
             "group": "Parameter",
@@ -76,7 +76,7 @@ define({ "api": [
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "article_text",
             "description": "<p>投稿文書</p>"
           },
@@ -168,5 +168,113 @@ define({ "api": [
     },
     "filename": "marcopanda/article.rb",
     "groupTitle": "article"
+  },
+  {
+    "type": "post",
+    "url": "/v1/rpc",
+    "title": "/user/regist",
+    "version": "0.1.0",
+    "name": "_user_regist",
+    "group": "user",
+    "description": "<p>ユーザ登録</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "come_from",
+            "description": "<p>どのSNSから来た。1:mail 2:facebook 3:google 4:wechat 5:twitter 6:linkedin</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "login_account",
+            "description": "<p>ログインアカウント。come_fromが1の場合メールアドレスになる。</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "sex",
+            "description": "<p>性別。1:男性 2:女性</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "generation",
+            "description": "<p>年代。1:〜9 2:10〜19 3:20〜29 4:30〜39 5:40〜49 6:50〜59 7:60〜69 8:70〜79 9:80〜</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "country",
+            "description": "<p>国名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "File",
+            "optional": true,
+            "field": "image_file",
+            "description": "<p>ユーザアイコン</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "error",
+            "description": "<p>エラーコード</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "message",
+            "description": "<p>エラーメッセージ</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "user_uuid",
+            "description": "<p>ユーザUUID。40桁ランダム文字</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"jsonrpc\": \"2.0\",\n    \"id\": \"1\",\n    \"result\":\n    {\n        \"id\": 2343\n    }\n\n}",
+          "type": "json"
+        },
+        {
+          "title": "ComeFromNotExist-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"jsonrpc\": \"2.0\",\n    \"id\": \"1\",\n    \"result\":\n    {\n        \"error\": \"ComeFromNotExist\",\n        \"message\": [\n            \"SNSが存在しません\"\n        ]\n    }\n\n}",
+          "type": "json"
+        },
+        {
+          "title": "UserExist-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"jsonrpc\": \"2.0\",\n    \"id\": \"1\",\n    \"result\":\n    {\n        \"error\": \"UserExist\",\n        \"message\": [\n            \"ユーザが既に存在しました\"\n        ]\n    }\n\n}",
+          "type": "json"
+        },
+        {
+          "title": "GenerationNotExist-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"jsonrpc\": \"2.0\",\n    \"id\": \"1\",\n    \"result\":\n    {\n        \"error\": \"GenerationNotExist\",\n        \"message\": [\n            \"年代が存在しません\"\n        ]\n    }\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "marcopanda/user.rb",
+    "groupTitle": "user"
   }
 ] });

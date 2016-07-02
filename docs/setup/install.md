@@ -15,6 +15,7 @@ http://weblabo.oscasierra.net/centos7-php56-install/
 yum -y install epel-release
 
 cd /etc/yum.repos.d
+
 wget http://rpms.famillecollet.com/enterprise/remi.repo
 
 yum -y --enablerepo=remi,remi-php56 install httpd php php-common
@@ -32,17 +33,23 @@ phpinfo();
 デフォルトで22ポートしか空いていないので、httpとhttpsのポートを開放するように設定します。
 
 許可するポートを確認する
+
 firewall-cmd --list-all
 
 httpとhttpsポートを開放する
+
 firewall-cmd --permanent --add-service=http --add-service=https
+
 firewall-cmd --reload
 
 許可するポートを確認する
+
 firewall-cmd --list-all
 
 http://47.90.38.52
+
 http://47.90.38.52/info.php
+
 が見れることを確認する
 
 ## ドメイン設定
@@ -51,3 +58,6 @@ ecsサーバーのIPに指すようにDNSレコードを登録する。
 DNSレコードの反映はすこし時間がかかりますが、
 一定時間空いてから、下記URLが見れるようになります。
 http://api.marcopanda.dreamsfor.com/info.php
+
+## 必要なミドルウェアをインストール
+yum install git
