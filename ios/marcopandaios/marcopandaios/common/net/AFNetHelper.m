@@ -44,7 +44,6 @@ static NSString * const AFECBaseURLString = @"https://api.kanae.ne.jp/";
         
     }
     return nil;
-    
 }
 
 +(NSURLSessionDataTask *)uploadPath:(NSString *)path withMethod:(_AFMethod) method withHeader:(NSDictionary *)headerParams withParms:(NSDictionary *)params withFormdata:(NSDictionary *)fromParams withBlock:(void(^)(id result,NSError *error))block
