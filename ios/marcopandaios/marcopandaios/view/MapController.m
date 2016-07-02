@@ -9,7 +9,7 @@
 #import "MapController.h"
 @interface MapController ()
 {
-    GMSMapView *mapView;
+    
 }
 
 @end
@@ -32,12 +32,13 @@
                                                             longitude:151.2086
                                                                  zoom:18];
     
-    mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView.myLocationEnabled = YES;
-    mapView.mapType = kGMSTypeTerrain;
-    mapView.settings.myLocationButton = YES;
-    mapView.frame=self.view.bounds;
-    [self.view addSubview:mapView] ;
+    googlemapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    googlemapView.myLocationEnabled = YES;
+    googlemapView.mapType = kGMSTypeTerrain;
+    googlemapView.settings.myLocationButton = YES;
+    googlemapView.delegate = self;
+    googlemapView.frame=self.view.bounds;
+    [self.view addSubview:googlemapView] ;
     
     self.cllocationManager= [[CLLocationManager alloc] init];
     if ([CLLocationManager locationServicesEnabled]) {
@@ -56,13 +57,13 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
-    [mapView animateToLocation : [newLocation coordinate]];
+    [googlemapView animateToLocation : [newLocation coordinate]];
     
     //緯度・経度を出力
     NSLog(@"緯度=%f, 経度=%f",
           [newLocation coordinate].latitude,
           [newLocation coordinate].longitude);
-    [self getAddressWithCoordinate:[newLocation coordinate]];
+    [self getAddressWithCoordinate:[newLocation coordinate] withblock:nil];
 }
 
 //GPS情報更新失敗
@@ -72,19 +73,22 @@
 }
 
 //google APIで座標の地名を取得する
--(void)getAddressWithCoordinate:(CLLocationCoordinate2D)coordinate
+-(void)getAddressWithCoordinate:(CLLocationCoordinate2D)coordinate withblock:(void (^)(NSString* address))block
 {
     GMSGeocoder *geocoder = [GMSGeocoder geocoder];
     [geocoder reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse * geocodeResponse, NSError * error) {
         
         //現在位置の座標を保存
-        [MarcoPandaData sharedDataSource].cur_coordinate = coordinate;
+        if(!block)
+        {
+            [MarcoPandaData sharedDataSource].cur_coordinate = coordinate;
+        }
         if([[geocodeResponse results] count]>0)
         {
             GMSAddress * address = [geocodeResponse firstResult];
             NSArray<NSString *> *arr_address=(NSArray *)address.lines;
             
-             NSString *tmp_address = @"";
+            NSString *tmp_address = @"";
             
             for (NSString *str_address in arr_address) {
                 if(![str_address isEqualToString:@""])
@@ -93,16 +97,57 @@
                     break;
                 }
             }
+            
             //一番目地名を保存
-            [MarcoPandaData sharedDataSource].cur_adress = tmp_address;
+            if(block)
+            {
+                block(tmp_address);
+            }
+            else
+            {
+                [MarcoPandaData sharedDataSource].cur_adress = tmp_address;
+            }
         }
         else{
-           [MarcoPandaData sharedDataSource].cur_adress = @"";
+            
+            if(block)
+            {
+                block(@"");
+            }
+            else
+            {
+                [MarcoPandaData sharedDataSource].cur_adress = @"";
+            }
         }
     }];
 }
 
-//図関連 end
+//ロングプレス時、マップの座標を取得
+-(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    //カスタマイズGMSMarkerを追加
+    [self getAddressWithCoordinate:coordinate withblock:^(NSString *address) {
+        [MarcoPandaData sharedDataSource].touch_coordinate=coordinate;
+        [MarcoPandaData sharedDataSource].touch_adress=address;
+        
+        GMSMarker * gmsmarker = [[GMSMarker alloc]init];
+        gmsmarker.position=[MarcoPandaData sharedDataSource].touch_coordinate;
+        UIImageView *icon = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 126*0.1, 176*0.1)];
+        [icon setImage:[UIImage imageNamed:@"mapMarker"]];
+        MarcoPandaMarker *iconmarker=[[MarcoPandaMarker alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width/2, 90) withTitle:[MarcoPandaData sharedDataSource].touch_adress withCategory:1 withMarkerid:@"1111"];
+        
+        
+        gmsmarker.iconView = iconmarker;
+        gmsmarker.appearAnimation = kGMSMarkerAnimationPop;
+        gmsmarker.map = mapView;
+        
+        
+    }];
+    
+    
+}
+
+//地図関連 end
 
 
 - (void)didReceiveMemoryWarning {
