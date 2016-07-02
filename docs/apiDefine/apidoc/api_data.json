@@ -236,16 +236,9 @@
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "text_language_code",
             "description": "<p>投稿文書言語（iso15924）</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "post_timestamp",
-            "description": "<p>投稿時タイムスタンプ</p>"
           }
         ]
       }
