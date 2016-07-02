@@ -116,7 +116,7 @@ http://fuelphp.com/
 から最新版fuelphpをダウンロードして、
 gitに保管して、サーバーでに下記のコマンドでgit pullする（apache権限）。
 
-    su - /bin/bash apache
+    su -s /bin/bash apache
     cd /var/www/html
     git pull
 
