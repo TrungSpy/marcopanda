@@ -9,6 +9,7 @@
 
 @apiParam {Number} come_from どのSNSから来た。1:mail 2:facebook 3:google 4:wechat 5:twitter 6:linkedin
 @apiParam {String} login_account ログインアカウント。come_fromが1の場合メールアドレスになる。
+@apiParam {String} nickname ニックネーム
 @apiParam {Number} [sex] 性別。1:男性 2:女性
 @apiParam {Number} [generation] 年代。1:〜9 2:10〜19 3:20〜29 4:30〜39 5:40〜49 6:50〜59 7:60〜69 8:70〜79 9:80〜
 @apiParam {String} [country] 国名
