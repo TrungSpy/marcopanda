@@ -19,6 +19,8 @@
 		5214F6F31D277E2F00ACC644 /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F6F21D277E2F00ACC644 /* PostController.m */; };
 		5214F6FD1D27822700ACC644 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F6FC1D27822700ACC644 /* MenuCell.m */; };
 		5214F7081D2785B000ACC644 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5214F7071D2785B000ACC644 /* MenuHeader.m */; };
+		527FA9621D28230A00A542FC /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 527FA9611D28230A00A542FC /* TitleView.m */; };
+		527FA9651D28232C00A542FC /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 527FA9641D28232C00A542FC /* SearchView.m */; };
 		52B044601D27968B001F55C5 /* SideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B0445F1D27968B001F55C5 /* SideMenu.m */; };
 		52B044631D27971E001F55C5 /* PostListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044621D27971E001F55C5 /* PostListController.m */; };
 		52B0446A1D279C26001F55C5 /* TabMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044691D279C26001F55C5 /* TabMenu.m */; };
@@ -53,6 +55,10 @@
 		5214F7011D27830600ACC644 /* marcopandaios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "marcopandaios-Prefix.pch"; sourceTree = "<group>"; };
 		5214F7061D2785B000ACC644 /* MenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuHeader.h; path = view/parts/MenuHeader.h; sourceTree = "<group>"; };
 		5214F7071D2785B000ACC644 /* MenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuHeader.m; path = view/parts/MenuHeader.m; sourceTree = "<group>"; };
+		527FA9601D28230A00A542FC /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleView.h; path = view/parts/TitleView.h; sourceTree = "<group>"; };
+		527FA9611D28230A00A542FC /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleView.m; path = view/parts/TitleView.m; sourceTree = "<group>"; };
+		527FA9631D28232C00A542FC /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchView.h; path = view/parts/SearchView.h; sourceTree = "<group>"; };
+		527FA9641D28232C00A542FC /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchView.m; path = view/parts/SearchView.m; sourceTree = "<group>"; };
 		52B0445E1D27968B001F55C5 /* SideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMenu.h; path = view/parts/SideMenu.h; sourceTree = "<group>"; };
 		52B0445F1D27968B001F55C5 /* SideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMenu.m; path = view/parts/SideMenu.m; sourceTree = "<group>"; };
 		52B044611D27971E001F55C5 /* PostListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostListController.h; path = view/PostListController.h; sourceTree = "<group>"; };
@@ -196,6 +202,10 @@
 				52B044701D27D745001F55C5 /* MarcoPandaMarker.m */,
 				52B044741D27EC6D001F55C5 /* MakerInfoButton.h */,
 				52B044751D27EC6D001F55C5 /* MakerInfoButton.m */,
+				527FA9601D28230A00A542FC /* TitleView.h */,
+				527FA9611D28230A00A542FC /* TitleView.m */,
+				527FA9631D28232C00A542FC /* SearchView.h */,
+				527FA9641D28232C00A542FC /* SearchView.m */,
 			);
 			name = parts;
 			sourceTree = "<group>";
@@ -340,6 +350,8 @@
 				5214F6FD1D27822700ACC644 /* MenuCell.m in Sources */,
 				52B0446A1D279C26001F55C5 /* TabMenu.m in Sources */,
 				5214F6F01D277DED00ACC644 /* MapController.m in Sources */,
+				527FA9621D28230A00A542FC /* TitleView.m in Sources */,
+				527FA9651D28232C00A542FC /* SearchView.m in Sources */,
 				5214F6F31D277E2F00ACC644 /* PostController.m in Sources */,
 				52B044711D27D745001F55C5 /* MarcoPandaMarker.m in Sources */,
 				5214F6EA1D27684200ACC644 /* AFNetHelper.m in Sources */,

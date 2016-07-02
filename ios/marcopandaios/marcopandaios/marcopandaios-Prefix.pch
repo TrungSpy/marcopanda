@@ -10,12 +10,14 @@
 #define marcopandaios_Prefix_pch
 #import <CoreLocation/CoreLocation.h>
 #import "MarcoPandaData.h"
+#import <CoreImage/CoreImage.h>
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 //カスタマイズ色
 #define color(r, g, b, a)   [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define CIcolor(r, g, b, a)   [CIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 
 //フォント
 #define W3FONT(a) [UIFont fontWithName:@"HiraKakuProN-W3" size:a]

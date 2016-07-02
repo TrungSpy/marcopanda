@@ -61,7 +61,7 @@
             if(i==4)
             {
                 UIImageView *img_rigtht = [[UIImageView alloc]initWithFrame:CGRectZero];
-                [img_rigtht setImage:[UIImage imageNamed:@"hosi_off"]];
+                [img_rigtht setImage:[UIImage imageNamed:@"btn_arrow"]];
                 img_rigtht.contentMode=UIViewContentModeScaleToFill;
                 [self addSubview:img_rigtht];
                 img_rigtht.translatesAutoresizingMaskIntoConstraints=NO;

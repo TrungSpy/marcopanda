@@ -12,7 +12,7 @@
 static MarcoPandaData *datas;
 
 @implementation MarcoPandaData
-@synthesize cur_adress,cur_coordinate,touch_adress,touch_coordinate;
+@synthesize cur_adress,cur_coordinate,touch_adress,touch_coordinate,ciimage;
 
 
 //共有データモジュールを初期化
@@ -35,6 +35,7 @@ static MarcoPandaData *datas;
         self.cur_coordinate = kCLLocationCoordinate2DInvalid;
         self.touch_adress=@"";
         self.touch_coordinate = kCLLocationCoordinate2DInvalid;
+        self.ciimage=[[CIImage alloc]initWithCGImage:[UIImage imageNamed:@"mapMarker"].CGImage];
     }
     return self;
 }

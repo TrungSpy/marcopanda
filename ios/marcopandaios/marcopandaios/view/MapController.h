@@ -16,6 +16,8 @@
 @interface MapController : UIViewController<CLLocationManagerDelegate,GMSMapViewDelegate>
 {
     GMSMapView *googlemapView;
+    CLLocationCoordinate2D cur_Coordinate;
+    CLLocationCoordinate2D center_Coordinate;
 }
 
 //GPS関連モジュール

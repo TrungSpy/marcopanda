@@ -27,6 +27,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    //検索枠
+    seachview = [[SearchView alloc]initWithFrame:CGRectZero];
+    [self.view addSubview:seachview];
+    seachview.translatesAutoresizingMaskIntoConstraints=NO;
+    
+    [self.view addConstraints:@[
+                           [NSLayoutConstraint constraintWithItem:seachview attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
+                           [NSLayoutConstraint constraintWithItem:seachview attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0],
+                           [NSLayoutConstraint constraintWithItem:seachview attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0],
+                           [NSLayoutConstraint constraintWithItem:seachview attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:64]
+                           ]];
+    
+    //タブメニュー
+    
+    tabmenu = [[TabMenu alloc]initWithFrame:CGRectZero];
+    [self.view addSubview:tabmenu];
+    tabmenu.translatesAutoresizingMaskIntoConstraints=NO;
+    
+    [self.view addConstraints:@[
+                                [NSLayoutConstraint constraintWithItem:tabmenu attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:seachview attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:tabmenu attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0],
+                                [NSLayoutConstraint constraintWithItem:tabmenu attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0],
+                                [NSLayoutConstraint constraintWithItem:tabmenu attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:44]
+                                ]];
+    
+    
+    
     //初期化マップ
     MapController *mapview=[[MapController alloc]init];
     PostListController *postsview=[[PostListController alloc]init];
@@ -50,6 +77,16 @@
     travelPageView.automaticallyAdjustsScrollViewInsets=NO;
     [travelPageView setViewControllers:@[[conentControllers objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
     }];
+    
+    
+    [self.view addConstraints:@[
+                                [NSLayoutConstraint constraintWithItem:travelPageView.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:tabmenu attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:travelPageView.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0],
+                                [NSLayoutConstraint constraintWithItem:travelPageView.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0],
+                                [NSLayoutConstraint constraintWithItem:travelPageView.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]
+                                ]];
+    
+    
 
 }
 

@@ -22,12 +22,14 @@
     
     CGFloat cur_hot;
     NSString *cur_markerid;
+    
+    CIImage *cur_markericon;
 }
 
 
 
 -(id)initWithFrame:(CGRect)frame withTitle:(NSString *)title withCategory:(NSInteger)type withMarkerid:(NSString *)markerid;
 
--(void)setIconHotFactor:(CGFloat)hotfactor;
+-(void)setIconHotFactor:(CIColor *)factor_color withCategory:(NSInteger)type;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface MarcoPandaData : NSObject
 {
@@ -24,6 +25,9 @@
 
 //現在経緯度
 @property (nonatomic,assign)CLLocationCoordinate2D touch_coordinate;
+
+//構成用Image
+@property (nonatomic,strong)CIImage* ciimage;
 
 //共有データモジュールを初期化
 +(MarcoPandaData *)sharedDataSource;

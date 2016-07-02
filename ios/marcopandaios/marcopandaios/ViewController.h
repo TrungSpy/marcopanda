@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchView.h"
+#import "TabMenu.h"
 
 @interface ViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
-
+{
+    SearchView *seachview;
+    TabMenu *tabmenu;
+}
 
 @end
 

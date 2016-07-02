@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef enum  MenuType
+{
+    MapType,
+    ArticleType
+    
+} MenuType;
 
+@protocol TabMenuViewDelegate;
 @interface TabMenu : UIView
 
 @end
