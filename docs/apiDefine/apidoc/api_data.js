@@ -81,6 +81,93 @@ define({ "api": [
   },
   {
     "type": "Post",
+    "url": "/article/fileupload",
+    "title": "ファイルアップロード",
+    "version": "0.1.0",
+    "name": "_article_fileupload",
+    "group": "article",
+    "description": "<p>ファイルアップロード</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "File[]",
+            "optional": true,
+            "field": "file",
+            "description": "<p>ファイル投稿（複数ファイル可能）</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "error",
+            "description": "<p>エラーコード</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": true,
+            "field": "message",
+            "description": "<p>エラーメッセージ</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "files",
+            "description": "<p>ファイル配列</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "files.multimedia_id",
+            "description": "<p>ファイルID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "files.download_url",
+            "description": "<p>ダウンロードURL</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"user_uuid\": \"5m0rjnZo7F2v3cx7GDj7WO5PmLcxSHSHlEtF0hNE\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "ComeFromNotExist-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"ComeFromNotExist\",\n    \"message\": [\n        \"SNSが存在しません\"\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "UserExist-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"UserExist\",\n    \"message\": [\n        \"ユーザが既に存在しました\"\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "GenerationNotExist-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"GenerationNotExist\",\n    \"message\": [\n        \"年代が存在しません\"\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "marcopanda/article.rb",
+    "groupTitle": "article"
+  },
+  {
+    "type": "Post",
     "url": "/article/like",
     "title": "旅行誌にいいねする",
     "version": "0.1.0",
