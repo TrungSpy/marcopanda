@@ -5,7 +5,7 @@
 @apiGroup address
 @apiSampleRequest off
 
-@apiDescription 住所検索
+@apiDescription 住所検索。直接に使わないかもしれません。
 
 @apiParam {String} location_name 地名
 @apiParam {String} [text_language_code] 検索文字言語（iso15924）

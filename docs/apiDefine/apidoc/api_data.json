@@ -6,7 +6,7 @@
     "version": "0.1.0",
     "name": "_address_search",
     "group": "address",
-    "description": "<p>住所検索</p>",
+    "description": "<p>住所検索。直接に使わないかもしれません。</p>",
     "parameter": {
       "fields": {
         "Parameter": [
