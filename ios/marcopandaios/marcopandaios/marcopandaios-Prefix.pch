@@ -8,6 +8,8 @@
 
 #ifndef marcopandaios_Prefix_pch
 #define marcopandaios_Prefix_pch
+#import <CoreLocation/CoreLocation.h>
+#import "MarcoPandaData.h"
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

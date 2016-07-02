@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <GoogleMaps/GMSGeocoder.h>
 
-@interface MapController : UIViewController
+@interface MapController : UIViewController<CLLocationManagerDelegate>
+{
+    
+}
+
+//GPS関連モジュール
+@property(nonatomic, strong) CLLocationManager *cllocationManager;
 
 @end
