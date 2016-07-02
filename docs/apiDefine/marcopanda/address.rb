@@ -7,7 +7,7 @@
 
 @apiDescription 住所検索
 
-@apiParam {String} [location_name] 地名
+@apiParam {String} location_name 地名
 @apiParam {String} [text_language_code] 検索文字言語（iso15924）
 
 @apiSuccess {String} error エラーコード

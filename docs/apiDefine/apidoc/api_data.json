@@ -13,7 +13,7 @@
           {
             "group": "Parameter",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "location_name",
             "description": "<p>地名</p>"
           },
