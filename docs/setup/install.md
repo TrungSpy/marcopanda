@@ -62,6 +62,45 @@ http://api.marcopanda.dreamsfor.com/info.php
 ## 必要なミドルウェアをインストール
 yum install git
 
+## RDS開設
+- aliyunのコンソール画面にRDSのインスタンスを作る
+- フル権限アカウント作成
+- 読み込みのみアカウント作成
+- データベース作成
+
+ECSサーバーにmysqlクライアントインストール
+
+yum -y --enablerepo=remi,remi-php56 install mysql
+
+RDSにmysqlログインできるか確認
+
+mysql -u [username] -p -h [host] [dbname]
+
+ECSサーバーにphpmyadminインストール
+
+yum -y --enablerepo=remi,remi-php56 install phpMyAdmin
+
+IP確認君でグローバルIPを確認して、
+そのIPアドレスをphpmyadmin.confの設定ファイルに追加する
+
+vi /etc/httpd/conf.d/phpMyAdmin.conf
+
+Require local
+
+の後ろに下記を追加する（２箇所）。
+
+Require ip [確認君で取得したグローバルIP]
+
+systemctl restart httpd.service
+
+http://api.marcopanda.dreamsfor.com/phpmyadmin/
+http://api.marcopanda.dreamsfor.com/phpmyadmin/setup/
+で確認する。
+
+http://api.marcopanda.dreamsfor.com/phpmyadmin/setup/
+画面に設定する
+
+
 # Google API KEY取得
 - Google Maps APIs
 https://developers.google.com/maps/documentation/

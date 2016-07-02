@@ -38,6 +38,12 @@
 @apiSuccess {Number} [search_results.spot_id] スポットID
 @apiSuccess {String} [search_results.location_name] 地名
 @apiSuccess {Number} [search_results.category_id] カテゴリID。1:温泉 2:レストラン 3:ホテル 4:観光スポット 5:交通 6:ショッピング 7:イベント 8:公共施設 9:アミューズメント 10:病院 99:その他
+@apiSuccess {String[]} [search_results.color] スポット色
+@apiSuccess {String} [search_results.color.rgb] スポット色のRGB形式。例：#99ee66
+@apiSuccess {Number} [search_results.color.r] Red、範囲：0〜255。例：99
+@apiSuccess {Number} [search_results.color.g] Green、範囲：0〜255。例：241
+@apiSuccess {Number} [search_results.color.b] Blue、範囲：0〜255。例：150
+@apiSuccess {Number} [search_results.color.a] Alpha、範囲：0〜1。例：0.5
 @apiSuccess {Number} [search_results.cost_id] コストID。1:¥0 2:¥1〜¥1,000 3:¥1,001〜¥2,000 4:¥2,001〜¥5,000 5:¥5,001〜¥10,000 6:¥10,001〜
 @apiSuccess {Number} [search_results.star] 星数
 @apiSuccess {Number} [search_results.article_number] 投稿数

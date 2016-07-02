@@ -996,6 +996,48 @@ define({ "api": [
           },
           {
             "group": "Success 200",
+            "type": "String[]",
+            "optional": true,
+            "field": "search_results.color",
+            "description": "<p>スポット色</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "search_results.color.rgb",
+            "description": "<p>スポット色のRGB形式。例：#99ee66</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": true,
+            "field": "search_results.color.r",
+            "description": "<p>Red、範囲：0〜255。例：99</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": true,
+            "field": "search_results.color.g",
+            "description": "<p>Green、範囲：0〜255。例：241</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": true,
+            "field": "search_results.color.b",
+            "description": "<p>Blue、範囲：0〜255。例：150</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": true,
+            "field": "search_results.color.a",
+            "description": "<p>Alpha、範囲：0〜1。例：0.5</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "Number",
             "optional": true,
             "field": "search_results.cost_id",
