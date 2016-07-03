@@ -9,6 +9,7 @@
 #import "SearchView.h"
 
 @implementation SearchView
+@synthesize delegate;
 
 -(id)initWithFrame:(CGRect)frame
 {
@@ -16,9 +17,10 @@
     
     if(self)
     {
-        self.backgroundColor = color(252, 238, 235, 1);
+         self.backgroundColor= color(252, 238, 235, 1);
         btn_menu = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn_menu setImage:[UIImage imageNamed:@"ic_menu_gr"] forState:UIControlStateNormal];
+        [btn_menu addTarget:self action:@selector(touchmenu) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn_menu];
         btn_menu.translatesAutoresizingMaskIntoConstraints = NO;
         [self addConstraints:@[
@@ -33,6 +35,7 @@
         searchBar.placeholder=@"place search";
         searchBar.barTintColor = color(252, 238, 235, 1);
         [searchBar setBackgroundImage:[UIImage new]];
+        searchBar.delegate=self;
         [self addSubview:searchBar];
         searchBar.translatesAutoresizingMaskIntoConstraints=NO;
         [self addConstraints:@[
@@ -46,6 +49,17 @@
     }
     
     return self;
+}
+
+-(void)touchmenu
+{
+    [delegate sideMenuTouch];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)csearchBar
+{
+    [searchBar resignFirstResponder];
+    [delegate searchWithAdress:searchBar.text];
 }
 
 @end

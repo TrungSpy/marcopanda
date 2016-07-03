@@ -1181,6 +1181,69 @@ define({ "api": [
   },
   {
     "type": "Post",
+    "url": "/multimedia/download",
+    "title": "ファイルダウンロード",
+    "version": "0.1.0",
+    "name": "_multimedia_download",
+    "group": "multimedia",
+    "description": "<p>ファイルダウンロード</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "path",
+            "description": "<p>パス</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": true,
+            "field": "error",
+            "description": "<p>エラーコード</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": true,
+            "field": "message",
+            "description": "<p>エラーメッセージ</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "binary",
+            "description": "<p>ファイルのバイナリデータ</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        },
+        {
+          "title": "NoResults-Response:",
+          "content": "HTTP/1.1 400 OK\n{\n    \"error\": \"PathNotFound\",\n    \"message\": [\n        \"パスが見つかりません\"\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "marcopanda/multimedia.rb",
+    "groupTitle": "multimedia"
+  },
+  {
+    "type": "Post",
     "url": "/user/regist",
     "title": "ユーザ登録",
     "version": "0.1.0",

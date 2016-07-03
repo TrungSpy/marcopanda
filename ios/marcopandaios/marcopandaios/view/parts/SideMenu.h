@@ -17,6 +17,9 @@
 @property (assign,nonatomic)id<SideMenuDelegate>delegate;
 @property (strong,nonatomic)UICollectionView *collect_menus;
 
++(void)showSidemenu:(id)delegateobj inView:(UIView *)view;
++(void)hiddenSidemenu;
+
 @end
 
 

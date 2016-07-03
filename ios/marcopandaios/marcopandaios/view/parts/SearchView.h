@@ -8,10 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchView : UIView
+@protocol SearchViewDelegate;
+@interface SearchView : UIView<UISearchBarDelegate>
 {
     UIButton *btn_menu;
     UISearchBar *searchBar;
 }
+
+@property (assign,nonatomic)id<SearchViewDelegate>delegate;
+@end
+
+@protocol SearchViewDelegate <NSObject>
+
+@required
+-(void)sideMenuTouch;
+-(void)searchWithAdress:(NSString *)adress;
 
 @end
