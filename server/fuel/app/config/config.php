@@ -11,6 +11,10 @@
  */
 
 return array(
+	/**
+	 * Google API Key(for web)
+	 */
+	'GOOGLE_API_KEY' => 'AIzaSyBSFFnq4OO1r-m7ha4iI4b6EeJUaH_7La4',
 
 	/**
 	 * base_url - The base URL of the application.
