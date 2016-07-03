@@ -9,7 +9,7 @@
 #import "MapController.h"
 @interface MapController ()
 {
-    
+    GMSMarker *cur_marker;
 }
 
 @end
@@ -21,6 +21,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor redColor];
 //    cur_Coordinate=kCLLocationCoordinate2DInvalid;
+    isRefresh=YES;
     NSLog(@"%@",NSStringFromCGRect(self.view.bounds));
     // Do any additional setup after loading the view.
     
@@ -41,6 +42,26 @@
                                 [NSLayoutConstraint constraintWithItem:btn_send attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:80]
                                 ]];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pushDetail:) name:@"notifpushDetail" object:nil];
+}
+
+-(void)pushDetail:(id)notfi
+{
+    if(notfi)
+    {
+        PostController *postview = [[PostController alloc]init];
+        postview.coordinate=[MarcoPandaData sharedDataSource].cur_coordinate;
+        postview.adress=[MarcoPandaData sharedDataSource].cur_adress;
+        postview.type=1;
+        [self.navigationController pushViewController:postview animated:YES];
+    }
+    else{
+        PostController *postview = [[PostController alloc]init];
+        postview.coordinate=[MarcoPandaData sharedDataSource].cur_coordinate;
+        postview.adress=[MarcoPandaData sharedDataSource].cur_adress;
+        postview.type=0;
+        [self.navigationController pushViewController:postview animated:YES];
+    }
 }
 
 
@@ -87,17 +108,22 @@
     if(googlemapView.myLocationEnabled)
     {
         //緯度・経度を出力
-            NSLog(@"緯度=%f, 経度=%f",
-                  [newLocation coordinate].latitude,
-                  [newLocation coordinate].longitude);
+        NSLog(@"緯度=%f, 経度=%f",
+              [newLocation coordinate].latitude,
+              [newLocation coordinate].longitude);
         [googlemapView animateToLocation : [newLocation coordinate]];
         [self getAddressWithCoordinate:[newLocation coordinate] withblock:nil];
+        
     }
     else{
-    
-
-//        googlemapView.myLocation
-    [self getAddressWithCoordinate:[newLocation coordinate] withblock:nil];
+        
+        
+        //        googlemapView.myLocation
+        [self getAddressWithCoordinate:[newLocation coordinate] withblock:nil];
+    }
+    if(isRefresh)
+    {
+        [self refreshData];
     }
     
 }
@@ -191,6 +217,27 @@
     }
 }
 
+-(void)createMarker:(NSArray *)arr_makerinfo
+{
+    for (NSDictionary *dic in arr_makerinfo) {
+        isRefresh=NO;
+        NSLog(@"%@",[dic description]);
+        GMSMarker * gmsmarker = [[GMSMarker alloc]init];
+        gmsmarker.position=CLLocationCoordinate2DMake([[dic objectForKey:@"latitude"] floatValue], [[dic objectForKey:@"longitude"] floatValue]);
+        
+        MarcoPandaMarker *iconmarker=[[MarcoPandaMarker alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width*3/4, 90) withTitle:[dic objectForKey:@"location_name"] withCategory:[[dic objectForKey:@"category_id"] integerValue] withMarkerid:[dic objectForKey:@"spot_id"] withhosi:[[dic objectForKey:@"star"] integerValue]];
+        
+        [iconmarker setIconHotFactor:CIcolor([[[dic objectForKey:@"color"] objectForKey:@"r"] integerValue], [[[dic objectForKey:@"color"] objectForKey:@"g"] integerValue], [[[dic objectForKey:@"color"] objectForKey:@"b"] integerValue], [[[dic objectForKey:@"color"] objectForKey:@"a"] integerValue]) withCategory:[[dic objectForKey:@"category_id"] integerValue]];
+        
+        
+        gmsmarker.iconView = iconmarker;
+        gmsmarker.appearAnimation = kGMSMarkerAnimationPop;
+        gmsmarker.map = googlemapView;
+    }
+
+    
+}
+
 //投稿
 -(void)sendArticle
 {
@@ -220,14 +267,49 @@
     
     //myLocationEnabled設定
     mapView.myLocationEnabled=YES;
+    isRefresh=YES;
     //現在位置に遷移
     [mapView animateToLocation:[MarcoPandaData sharedDataSource].cur_coordinate];
     
     return NO;
 }
 
+- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    if(cur_marker)
+    {
+        if([cur_marker.iconView isKindOfClass:[MarcoPandaMarker class]])
+        {
+            [((MarcoPandaMarker *)cur_marker.iconView)setInfoViewHidden:YES];
+        }
+    }
+    cur_marker = nil;
+}
+
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
+{
+    if(cur_marker)
+    {
+        if([cur_marker.iconView isKindOfClass:[MarcoPandaMarker class]])
+        {
+            [((MarcoPandaMarker *)cur_marker.iconView)setInfoViewHidden:YES];
+        }
+    }
+    cur_marker=marker;
+    if(cur_marker)
+    {
+        if([cur_marker.iconView isKindOfClass:[MarcoPandaMarker class]])
+        {
+            [((MarcoPandaMarker *)cur_marker.iconView)setInfoViewHidden:NO];
+        }
+    }
+    
+    return YES;
+}
+
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker
 {
+    
     
 }
 
@@ -243,6 +325,28 @@
 
 //地図関連 end
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+
+-(void)refreshData
+{
+    [AFNetHelper requestPath:@"/map/search.json" withMethod:AFPOST withParms:@{@"longitude":@(center_Coordinate.longitude),@"latitude":@(center_Coordinate.latitude),@"zoom":@(googlemapView.camera.zoom)} withBlock:^(id result, NSError *error) {
+        if(!error)
+        {
+            NSLog(@"%@",[result description]);
+            if([[result objectForKey:@"search_results"] isKindOfClass:[NSArray class]])
+            {
+                [googlemapView clear];
+                cur_marker=nil;
+                [self createMarker:[result objectForKey:@"search_results"]];
+            }
+//
+        }
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -10,7 +10,7 @@
 
 @implementation MarcoPandaMarker
 
--(id)initWithFrame:(CGRect)frame withTitle:(NSString *)title withCategory:(NSInteger)type withMarkerid:(NSString *)markerid
+-(id)initWithFrame:(CGRect)frame withTitle:(NSString *)title withCategory:(NSInteger)type withMarkerid:(NSString *)markerid withhosi:(NSInteger)count
 {
     self = [super initWithFrame:frame];
     if(self)
@@ -32,6 +32,7 @@
         view_content.layer.masksToBounds=YES;
         view_content.layer.cornerRadius=5;
         [self addSubview:view_content];
+        view_content.hidden=YES;
         
         view_content.translatesAutoresizingMaskIntoConstraints=NO;
         
@@ -39,6 +40,7 @@
         btn_send=[UIButton buttonWithType:UIButtonTypeCustom];
         [btn_send setImage:[UIImage imageNamed:@"btn_post"] forState:UIControlStateNormal];
         btn_send.backgroundColor=[UIColor clearColor];
+        [btn_send addTarget:self action:@selector(postnew) forControlEvents:UIControlEventTouchUpInside];
         [view_content addSubview:btn_send];
         btn_send.translatesAutoresizingMaskIntoConstraints=NO;
         [self addConstraints:@[
@@ -48,7 +50,8 @@
                                [NSLayoutConstraint constraintWithItem:btn_send attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
                                ]];
         
-        btn_info=[[MakerInfoButton alloc]initWithFrame:CGRectZero withTitle:title withhosi:3];
+        btn_info=[[MakerInfoButton alloc]initWithFrame:CGRectZero withTitle:title withhosi:count];
+        [btn_info addTarget:self action:@selector(gotoDetail) forControlEvents:UIControlEventTouchUpInside];
         [view_content addSubview:btn_info];
         btn_info.translatesAutoresizingMaskIntoConstraints=NO;
         
@@ -73,6 +76,15 @@
     return self;
 }
 
+-(void)gotoDetail
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"notifpushDetail" object:cur_markerid];
+}
+
+-(void)postnew
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"notifpushDetail" object:nil];
+}
 -(void)setIconHotFactor:(CIColor *)factor_color withCategory:(NSInteger)type
 {
     CIImage *img_maker=[CIImage imageWithCGImage:[UIImage imageNamed:[NSString stringWithFormat:@"c%ld",(long)type]].CGImage];
@@ -94,5 +106,13 @@
     
     [img_fukidashi setImage:[UIImage imageWithCIImage:compressFilter.outputImage]];
 }
+
+-(void)setInfoViewHidden:(BOOL)hidden
+{
+    view_content.hidden=hidden;
+}
+
+
+
 
 @end
