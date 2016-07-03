@@ -34,7 +34,7 @@
 @apiSuccess {Number} [zoom] 拡大倍数（現在地から検索する場合同じ値を返す。地名で検索する場合デフォルト値を返す。）
 @apiSuccess {Object} google_map_results Google APIから返ってきた検索結果（status=OKの場合）
 @apiSuccess {Number} search_result_count 検索結果件数
-@apiSuccess {Object[]} search_results 検索結果
+@apiSuccess {Object[]} [search_results] 検索結果
 @apiSuccess {Number} [search_results.article_id] 投稿ID
 @apiSuccess {Number} [search_results.spot_id] スポットID
 @apiSuccess {String[]} [search_results.image_urls] 画像URL配列

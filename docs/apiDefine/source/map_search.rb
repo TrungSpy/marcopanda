@@ -30,7 +30,7 @@
 @apiSuccess {String} [error] エラーコード
 @apiSuccess {String[]} [message] エラーメッセージ
 @apiSuccess {Number} [zoom] 拡大倍数（現在地から検索する場合同じ値を返す。地名で検索する場合デフォルト値を返す。）
-@apiSuccess {Object} google_map_results Google APIから返ってきた検索結果（status=OKの場合）
+@apiSuccess {Object} [google_map_results] Google APIから返ってきた検索結果（status=OKの場合）
 @apiSuccess {Object[]} search_results 検索結果
 @apiSuccess {Number} [search_results.longitude] 経度
 @apiSuccess {Number} [search_results.latitude] 緯度

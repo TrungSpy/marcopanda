@@ -696,7 +696,7 @@ define({ "api": [
           {
             "group": "Success 200",
             "type": "Object[]",
-            "optional": false,
+            "optional": true,
             "field": "search_results",
             "description": "<p>検索結果</p>"
           },
@@ -1028,7 +1028,7 @@ define({ "api": [
           {
             "group": "Success 200",
             "type": "Object",
-            "optional": false,
+            "optional": true,
             "field": "google_map_results",
             "description": "<p>Google APIから返ってきた検索結果（status=OKの場合）</p>"
           },
