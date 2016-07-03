@@ -37,5 +37,7 @@ return array(
 							'message' => 'Path is necessary'),
 	'errors.0017' => array('code' => 'PathNotFoundInDB',
 							'message' => 'Path is not found'),
+	'errors.0018' => array('code' => 'ShortOfParameter',
+							'message' => 'Parameter is not enough'),
 	
 );

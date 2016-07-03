@@ -228,7 +228,8 @@ class Articles extends Base {
 				->current();
 			$update_spot = \DB::update('spot')
 				->set(array(
-					'article_count_in_last_30_days' => $search_articles['cnt']
+					'article_count_in_last_30_days' => $search_articles['cnt'],
+					'article_count' => \DB::expr('article_count + 1')
 				))->where('spot_id', '=', $spot_id)
 				->execute();
 
