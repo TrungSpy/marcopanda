@@ -296,7 +296,7 @@ class Articles extends Base {
 			$one_result['article_text'] = $value['article_text'];
 			$one_result['text_language_code'] = $value['text_language_code'];
 			$one_result['post_timestamp'] = $value['created_at'];
-			$one_result['star'] = $value['average_star'];
+			$one_result['star'] = (int)mt_rand(0, 5);// $value['average_star'];
 			$one_result['like_number'] = $value['like_number'];
 			$search_results[] = $one_result;
 		}
