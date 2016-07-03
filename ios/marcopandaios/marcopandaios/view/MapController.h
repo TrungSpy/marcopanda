@@ -12,12 +12,16 @@
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GMSGeocoder.h>
 #import "MarcoPandaMarker.h"
+#import "PostController.h"
 
 @interface MapController : UIViewController<CLLocationManagerDelegate,GMSMapViewDelegate>
 {
     GMSMapView *googlemapView;
-    CLLocationCoordinate2D cur_Coordinate;
+//    CLLocationCoordinate2D cur_Coordinate;
     CLLocationCoordinate2D center_Coordinate;
+    __block NSString *center_adress;
+    
+    UIButton *btn_send;
 }
 
 //GPS関連モジュール

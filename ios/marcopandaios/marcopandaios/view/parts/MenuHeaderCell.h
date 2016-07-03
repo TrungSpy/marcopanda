@@ -1,13 +1,16 @@
 //
-//  MenuHeader.m
+//  MenuHeaderCell.h
 //  marcopandaios
 //
 //  Created by kawa on 2016/07/02.
 //  Copyright © 2016年 magicfor. All rights reserved.
 //
 
-#import "MenuHeader.h"
+#import <UIKit/UIKit.h>
 
-@implementation MenuHeader
+@interface MenuHeaderCell : UICollectionViewCell
+{
+    UIImageView *img_icon;
+}
 
 @end

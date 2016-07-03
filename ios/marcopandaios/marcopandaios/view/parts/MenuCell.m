@@ -17,8 +17,7 @@
     {
         self.backgroundColor=[UIColor clearColor];
         lb_title=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, frame.size.width-32*2, frame.size.height)];
-        lb_title.text=@"テスト〜〜";
-        lb_title.font=W3FONT(30);
+        lb_title.font=W3FONT(15);
         lb_title.textColor=color(0, 0, 0, 0.87 );
         lb_title.textAlignment=NSTextAlignmentLeft;
         [self addSubview:lb_title];
@@ -30,13 +29,13 @@
                                [NSLayoutConstraint constraintWithItem:lb_title attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:32]
                                ]];
         UIView *linelayer=[[UIView alloc]initWithFrame:CGRectMake(0, frame.size.height-1, frame.size.width, 1)];
-        linelayer.backgroundColor=color(234, 234, 234, 0.6);
+        linelayer.backgroundColor=color(252, 238, 235, 1);
         [self addSubview:linelayer];
     }
     return self;
 }
 
--(void)setMenuInfo:(NSString *)title version:(NSString *)version
+-(void)setMenuInfo:(NSString *)title withicon:(NSString *)icon
 {
     lb_title.text=title;
 }

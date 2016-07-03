@@ -8,7 +8,8 @@
 
 #import "SideMenu.h"
 #import "MenuCell.h"
-#import "MenuHeader.h"
+#import "MenuHeaderCell.h"
+static SideMenu *sideMenu;
 
 @implementation SideMenu
 @synthesize collect_menus,delegate;
@@ -18,53 +19,34 @@
     self = [super initWithFrame:frame];
     if(self)
     {
-//        self.backgroundColor=color(0,0,0,0.4);
-//        UICollectionViewFlowLayout * flowLayoutmenus = [[UICollectionViewFlowLayout alloc] init];
-//        [flowLayoutmenus setScrollDirection:UICollectionViewScrollDirectionVertical];
-//        [flowLayoutmenus setSectionInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-//        [flowLayoutmenus setMinimumLineSpacing:0];
-//        [flowLayoutmenus setMinimumInteritemSpacing:0];
-//        
-//        if(isPad)
-//        {
-//            [flowLayoutmenus setItemSize:CGSizeMake(SHAREDATA.devicewidth*0.42f, 80)];
-//            [flowLayoutmenus setHeaderReferenceSize:CGSizeMake(SHAREDATA.devicewidth*0.42f, 170)];
-//        }
-//        else
-//        {
-//            [flowLayoutmenus setItemSize:CGSizeMake(SHAREDATA.devicewidth*0.80f, 80)];
-//            [flowLayoutmenus setHeaderReferenceSize:CGSizeMake(SHAREDATA.devicewidth*0.80f, 170)];
-//        }
-//        
-//        collect_menus=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width*0.85f,frame.size.height) collectionViewLayout:flowLayoutmenus];
-//        collect_menus.showsHorizontalScrollIndicator=NO;
-//        collect_menus.showsVerticalScrollIndicator=NO;
-//        collect_menus.backgroundColor=[UIColor whiteColor];
-//        [collect_menus registerClass:[CasioMenuCell class] forCellWithReuseIdentifier:@"CasioMenuCell"];
-//        [collect_menus registerClass:[CasioMenuHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CasioMenuHeader"];
-//        
-//        collect_menus.dataSource=self;
-//        collect_menus.delegate=self;
-//        [self addSubview:collect_menus];
-//        
-//        collect_menus.translatesAutoresizingMaskIntoConstraints=NO;
-//        if(isPad)
-//        {
-//            [self addConstraints:@[
-//                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
-//                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
-//                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0],
-//                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:SHAREDATA.devicewidth*0.42f],
-//                                   ]];
-//        }
-//        else{
-//            [self addConstraints:@[
-//                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
-//                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
-//                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0],
-//                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:SHAREDATA.devicewidth*0.80f],
-//                                   ]];
-//        }
+        self.backgroundColor=color(0,0,0,0.4);
+        UICollectionViewFlowLayout * flowLayoutmenus = [[UICollectionViewFlowLayout alloc] init];
+        [flowLayoutmenus setScrollDirection:UICollectionViewScrollDirectionVertical];
+        [flowLayoutmenus setSectionInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [flowLayoutmenus setMinimumLineSpacing:0];
+        [flowLayoutmenus setMinimumInteritemSpacing:0];
+        
+        [flowLayoutmenus setItemSize:CGSizeMake(frame.size.width*0.7, 80)];
+        
+        collect_menus=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width*0.85f,frame.size.height) collectionViewLayout:flowLayoutmenus];
+        collect_menus.showsHorizontalScrollIndicator=NO;
+        collect_menus.showsVerticalScrollIndicator=NO;
+        collect_menus.backgroundColor=[UIColor whiteColor];
+        [collect_menus registerClass:[MenuCell class] forCellWithReuseIdentifier:@"MenuCell"];
+        [collect_menus registerClass:[MenuHeaderCell class] forCellWithReuseIdentifier:@"MenuHeaderCell"];
+        
+        collect_menus.dataSource=self;
+        collect_menus.delegate=self;
+        [self addSubview:collect_menus];
+        
+        collect_menus.translatesAutoresizingMaskIntoConstraints=NO;
+        
+            [self addConstraints:@[
+                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
+                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
+                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0],
+                                   [NSLayoutConstraint constraintWithItem:collect_menus attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:frame.size.width*0.7],
+                                   ]];
         
     }
     return self;
@@ -77,49 +59,79 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
--(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
-          viewForSupplementaryElementOfKind:(NSString *)kind
-                                atIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView * view = nil;
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                  withReuseIdentifier:@"MenuHeader"
-                                                         forIndexPath:indexPath];
-        
+    CGFloat height=0;
+    if(indexPath.item == 0)
+    {
+        height = 160;
     }
-    return view;
+    else{
+        height = 50;
+    }
+    
+    return CGSizeMake(self.frame.size.width*0.7, height);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *newCell;
-    newCell = [collectionView
+    if(indexPath.item!=0)
+    {
+        newCell = [collectionView
                dequeueReusableCellWithReuseIdentifier:@"MenuCell"
                forIndexPath:indexPath];
-    MenuCell *menucell=((MenuCell *)newCell);
+    }
+    else{
+        newCell = [collectionView
+                   dequeueReusableCellWithReuseIdentifier:@"MenuHeaderCell"
+                   forIndexPath:indexPath];
+    }
+    
     switch (indexPath.item) {
         case 0:
-            [menucell setMenuInfo:@"評価" withicon:@""];
+            //header 関連設定
             break;
         case 1:
+        {
+            MenuCell *menucell=((MenuCell *)newCell);
+            [menucell setMenuInfo:@"評価" withicon:@""];
+            break;
+        }
+        case 2:
+            {
+            MenuCell *menucell=((MenuCell *)newCell);
             [menucell setMenuInfo:@"コスト" withicon:@""];
             break;
-        case 2:
+            }
+        case 3:
+            {
+            MenuCell *menucell=((MenuCell *)newCell);
             [menucell setMenuInfo:@"数" withicon:@""];
             break;
-        case 3:
+            }
+        case 4:
+            {
+            MenuCell *menucell=((MenuCell *)newCell);
             [menucell setMenuInfo:@"性別" withicon:@""];
             break;
-        case 4:
+            }
+        case 5:
+        {
+            MenuCell *menucell=((MenuCell *)newCell);
             [menucell setMenuInfo:@"時間帯" withicon:@""];
             break;
-        case 5:
+        }
+        case 6:
+        {
+            MenuCell *menucell=((MenuCell *)newCell);
             [menucell setMenuInfo:@"国" withicon:@""];
             break;
+        }
             
         default:
             break;
@@ -133,5 +145,42 @@
     [delegate menuTouch:indexPath.item];
     
 }
+
++(void)showSidemenu:(id)delegateobj inView:(UIView *)view
+{
+    if(sideMenu==nil)
+    {
+        sideMenu=[[SideMenu alloc]initWithFrame:view.bounds];
+    }
+    
+    [sideMenu.collect_menus.layer removeAllAnimations];
+    CATransition *transition= [CATransition animation];
+    transition.duration = 0.3;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = kCATransitionFromLeft;
+    [sideMenu.collect_menus.layer addAnimation:transition forKey:nil];
+    
+    sideMenu.autoresizesSubviews=YES;
+    sideMenu.delegate=delegateobj;
+    sideMenu.autoresizingMask=UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    [view addSubview:sideMenu];
+}
+
++(void)hiddenSidemenu
+{
+    if(sideMenu)
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            sideMenu.collect_menus.frame=CGRectMake(-sideMenu.collect_menus.frame.size.width, sideMenu.collect_menus.frame.origin.y, sideMenu.collect_menus.frame.size.width, sideMenu.collect_menus.frame.size.height);
+        } completion:^(BOOL finished) {
+            sideMenu.delegate=nil;
+            [sideMenu removeFromSuperview];
+            sideMenu=nil;
+        }];
+    }
+    
+}
+
 
 @end

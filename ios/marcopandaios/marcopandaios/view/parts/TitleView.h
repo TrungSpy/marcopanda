@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TitleViewDelegate;
 @interface TitleView : UIView
 {
-    
+    UILabel *lb_title;
+    UIButton *btn_back;
 }
 
+@property (assign,nonatomic)id<TitleViewDelegate>delegate;
+
+-(id)initWithFrame:(CGRect)frame withTitle:(NSString *)title;
+
 @end
+
+@protocol TitleViewDelegate <NSObject>
+
+@required
+-(void)backto;
+@end
+
