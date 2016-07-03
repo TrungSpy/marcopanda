@@ -81,6 +81,7 @@ class Controller_Article extends Controller_Base
 	{
 		try {
 			$results = Articles::regist( self::$_JSON );
+			//\Log::warning(print_r($results, true));
 
 			return $this->response($results, 200);
 		} catch (\MarcoPandaException $e) {

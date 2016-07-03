@@ -16,7 +16,7 @@ class Articles extends Base {
 			// このアップロードのカスタム設定
 			$upload_config = array('path' => DOCROOT. '../fuel/app/tmp/upload/'. $date_jst,
 					'randomize' => true,
-					'max_size' => 2097152
+					'max_size' => 5242880
 				);
 			self::upload_file($upload_config);
 			if(count(self::$uploaded_files_error) > 0) {
@@ -183,7 +183,7 @@ class Articles extends Base {
 							'generation' => isset($data['generation'])?$data['generation']:null,
 							'country' => isset($data['text_language_code '])?$data['text_language_code ']:null,
 							'created_at' => self::get_datetime_jst(),
-						))->where('user_uuid', '=', $data['user_uuid'])
+						))
 						->execute();
 					if($user_insert_result[1] == 0) {
 						throw new \MarcoPandaException(14);	// 原因不明のユーザ登録失敗
