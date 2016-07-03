@@ -209,6 +209,9 @@
 {
     NSLog(@"投稿！");
     PostController *postview = [[PostController alloc]init];
+    postview.coordinate=coordinate;
+    postview.adress=adress;
+    postview.type=0;
     [self.navigationController pushViewController:postview animated:YES];
 }
 

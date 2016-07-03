@@ -17,8 +17,8 @@ typedef enum _AFMethod {
 @interface AFNetHelper : AFHTTPSessionManager
 + (instancetype)sharedClient;
 
-+(NSURLSessionDataTask *)requestPath:(NSString *)path withMethod:(_AFMethod) method withHeader:(NSDictionary *)headerParams withParms:(NSDictionary *)params withBlock:(void(^)(id result,NSError *error))block;
++(NSURLSessionDataTask *)requestPath:(NSString *)path withMethod:(_AFMethod) method withParms:(NSDictionary *)params withBlock:(void(^)(id result,NSError *error))block;
 
-+(NSURLSessionDataTask *)uploadPath:(NSString *)path withMethod:(_AFMethod) method withHeader:(NSDictionary *)headerParams withParms:(NSDictionary *)params withFormdata:(NSDictionary *)fromParams withBlock:(void(^)(id result,NSError *error))block;
++(NSURLSessionDataTask *)uploadPath:(NSString *)path withMethod:(_AFMethod) method withParms:(NSDictionary *)params withFormdata:(NSDictionary *)fromParams withBlock:(void(^)(id result,NSError *error))block;
 
 @end

@@ -8,9 +8,7 @@
 #import "AFNetHelper.h"
 
 
-static NSString * const AFAppBaseURLString = @"https://talk-api.kanae.ne.jp/";
-static NSString * const AFECBaseURLString = @"https://api.kanae.ne.jp/";
-
+static NSString * const AFAppBaseURLString = @"http://api.marcopanda.dreamsfor.com";
 @implementation AFNetHelper
 
 + (instancetype)sharedClient {
@@ -19,14 +17,14 @@ static NSString * const AFECBaseURLString = @"https://api.kanae.ne.jp/";
     dispatch_once(&onceToken, ^{
         _sharedClient = [[AFNetHelper alloc] initWithBaseURL:[NSURL URLWithString:AFAppBaseURLString]];
         _sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-        //        _sharedClient.requestSerializer = [AFJSONRequestSerializer serializer];
+        _sharedClient.requestSerializer = [AFJSONRequestSerializer serializer];
     });
     
     return _sharedClient;
 }
 
 
-+(NSURLSessionDataTask *)requestPath:(NSString *)path withMethod:(_AFMethod) method withHeader:(NSDictionary *)headerParams withParms:(NSDictionary *)params withBlock:(void(^)(id result,NSError *error))block
++(NSURLSessionDataTask *)requestPath:(NSString *)path withMethod:(_AFMethod) method withParms:(NSDictionary *)params withBlock:(void(^)(id result,NSError *error))block
 {
     
     AFNetHelper *_sharedClient=[AFNetHelper sharedClient];
@@ -46,7 +44,7 @@ static NSString * const AFECBaseURLString = @"https://api.kanae.ne.jp/";
     return nil;
 }
 
-+(NSURLSessionDataTask *)uploadPath:(NSString *)path withMethod:(_AFMethod) method withHeader:(NSDictionary *)headerParams withParms:(NSDictionary *)params withFormdata:(NSDictionary *)fromParams withBlock:(void(^)(id result,NSError *error))block
++(NSURLSessionDataTask *)uploadPath:(NSString *)path withMethod:(_AFMethod) method withParms:(NSDictionary *)params withFormdata:(NSDictionary *)fromParams withBlock:(void(^)(id result,NSError *error))block
 {
     AFNetHelper *_sharedClient=[AFNetHelper sharedClient];
     if (method == AF_IMAGE){
