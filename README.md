@@ -17,25 +17,26 @@ http://api.marcopanda.dreamsfor.com/apidefine/
 
 - ユーザ登録（プレゼンのためUUIDのみ登録）
 
-curl -X POST -d '{"user_uuid":"DsMjyOQu7JxMgQtksYMRoTtCCKMwBGw9CxETCB3Q"}' http://api.marcopanda.dreamsfor.com/user/uuid_regist.json
+    curl -X POST -d '{"user_uuid":"DsMjyOQu7JxMgQtksYMRoTtCCKMwBGw9CxETCB3Q"}' http://api.marcopanda.dreamsfor.com/user/uuid_regist.json
 
 - 旅行誌画像登録
 
-curl -F file1=@post01.jpg http://api.marcopanda.dreamsfor.com/article/fileupload.json
+    curl -F file1=@post01.jpg http://api.marcopanda.dreamsfor.com/article/fileupload.json
 
 - 旅行誌登録
 
-curl -X POST -d '{"longitude":"139.729249","latitude":"35.660464","category_id":"3","cost_id":"8","multimedia_id":[1,2],"article_text":"A happy day!"}' http://api.marcopanda.dreamsfor.com/article/post.json
+    curl -X POST -d '{"longitude":"139.729249","latitude":"35.660464","category_id":"3","cost_id":"8","multimedia_id":[1,2],"article_text":"A happy day!"}' http://api.marcopanda.dreamsfor.com/article/post.json
 
 - 画像ダウンロード
 
 http://api.marcopanda.dreamsfor.com/multimedia/download?path=2016-07-03/11b94aa158d38b270da53743e30a9cf8.png
 
 - スポット検索（現在地検索）
-curl -X POST -d '{"longitude":"139.729249","latitude":"35.660464","zoom":"15"}' http://api.marcopanda.dreamsfor.com/map/search.json
+    curl -X POST -d '{"longitude":"139.729249","latitude":"35.660464","zoom":"15"}' http://api.marcopanda.dreamsfor.com/map/search.json
 
 - 旅行誌検索（現在地検索）
-curl -X POST -d '{"longitude":"139.729249","latitude":"35.660464","zoom":"15"}' http://api.marcopanda.dreamsfor.com/article/search.json
+
+    curl -X POST -d '{"longitude":"139.729249","latitude":"35.660464","zoom":"15"}' http://api.marcopanda.dreamsfor.com/article/search.json
 
 ### API未実装
 
