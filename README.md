@@ -53,12 +53,33 @@ http://api.marcopanda.dreamsfor.com/multimedia/download?path=2016-07-03/11b94aa1
 - 星を付ける
 - 旅行誌にコメントする
 
-# アプリビルド手順
+# アプリ
+
+## 対応iOS
+
+iOS9以上
+
+## 環境構築、ビルド手順
 
 + Xcode 8をインストールしてください。
 + cd /marcopanda/ios/marcopandaios
 + pod install (pod 1.0.0が必要です)
 + xocde8でビルドする
+
+## 実機で実行する方法
+
+### デベロッパーアカウントを持っていない方
+
+iPhoneをUSBでPCと繋いて、XCode経由でアプリにインストールする
+
+### デベロッパーアカウントを持っている方
+
+端末のUDIDを収集して、iOS developer centerに端末を登録して、
+デベロッパー用プロビジョニングファイルを更新、或いは作成して、
+それを使って、端末にインストールできるバイナリデータをビルドする。
+
+ビルドしたら、iTunesでAdhoc版アプリをインストールするや、
+OTA経由端末にインストールするやなど方法でインストールする。
 
 # オープンソース
 
