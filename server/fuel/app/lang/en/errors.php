@@ -1,6 +1,8 @@
 <?php
 
 return array(
+	'errors.0000' => array('code' => 'SystemError',
+							'message' => 'System error'),
 	'errors.0001' => array('code' => 'CategoryNotExis',
 							'message' => 'The category is not exist'),
 	'errors.0002' => array('code' => 'CostNotExist',
@@ -31,5 +33,9 @@ return array(
 							'message' => 'Failed to regist user'),
 	'errors.0015' => array('code' => 'ArticleRegistFailed',
 							'message' => 'Failed to regist article'),
+	'errors.0016' => array('code' => 'PathIsEmpty',
+							'message' => 'Path is necessary'),
+	'errors.0017' => array('code' => 'PathNotFoundInDB',
+							'message' => 'Path is not found'),
 	
 );
