@@ -90,25 +90,19 @@ class Controller_Article extends Controller_Base
 	}
 
 	/**
-	 * A typical "Hello, Bob!" type example.  This uses a Presenter to
-	 * show how to use them.
+	 * search articles
 	 *
 	 * @access  public
 	 * @return  Response
 	 */
-	public function action_hello()
+	public function action_search()
 	{
-		return Response::forge(Presenter::forge('welcome/hello'));
-	}
+		try {
+			$results = Articles::search_3_in_1( self::$_JSON );
 
-	/**
-	 * The 404 action for the application.
-	 *
-	 * @access  public
-	 * @return  Response
-	 */
-	public function action_404()
-	{
-		return Response::forge(Presenter::forge('welcome/404'), 404);
+			return $this->response($results, 200);
+		} catch (\MarcoPandaException $e) {
+			$this->error($e);
+		}
 	}
 }

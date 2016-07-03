@@ -16,6 +16,7 @@ class Maps extends Base {
 		}
 	}
 	
+	// 現在地から検索する
 	public static function search_by_geocode($data) {
 		if(empty($data['longitude']) || empty($data['latitude']) || empty($data['zoom'])) {
 			throw new \MarcoPandaException(18);

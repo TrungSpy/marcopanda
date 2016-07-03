@@ -241,6 +241,70 @@ class Articles extends Base {
 		}
 		return array('article_id' => $artice_insert_result[0]);
 	}
+	
+	public static function search_3_in_1($data) {
+		try {
+			if(!empty($data['longitude'])) {
+				return self::search_by_geocode($data);
+			}
+			
+		} catch(\Exception $e) {
+			throw $e;
+		}
+	}
+
+	// 現在地から検索する
+	public static function search_by_geocode($data) {
+		if(empty($data['longitude']) || empty($data['latitude']) || empty($data['zoom'])) {
+			throw new \MarcoPandaException(18);
+		}
+		$query_cnt = \DB::select(\DB::expr('count(article_id) as cnt'))->from('article');
+		$query = \DB::select(\DB::expr('article.*, spot.category_id, spot.cost_id, spot.longitude, spot.latitude, spot.location_name'))
+			->from('article')
+			->join('spot', 'LEFT')
+			->on('article.spot_id', '=', 'spot.spot_id');
+
+		// limit and offset
+		if(isset($data['page'])) {
+			$query = $query->limit($data['page'])
+						->offset(($data['page'] - 1) * 20);
+		}
+		if(!isset($data['sort_by']) || $data['sort_by'] == 2) {
+			// デフォルトはいいね数でソート
+			$query = $query->order_by('article.like_number', 'desc');
+		} else if($data['sort_by'] == 3) {
+			// 星数
+			$query = $query->order_by('article.average_star', 'desc');
+		} else {
+			// 新しい順
+			$query = $query->order_by('article.created_at', 'desc');
+		}
+		$result_cnt = $query_cnt->execute()->current();
+		$result = $query->execute()->as_array();
+		\Log::warning(\DB::last_query());
+		
+		$search_results = array();
+		foreach($result as $key => $value) {
+			$one_result = array();
+			$one_result['longitude'] = $value['longitude'];
+			$one_result['latitude'] = $value['latitude'];
+			$one_result['article_id'] = $value['article_id'];
+			$one_result['spot_id'] = $value['spot_id'];
+			$one_result['location_name'] = $value['location_name'];
+			$one_result['category_id'] = $value['category_id'];
+			$one_result['cost_id'] = $value['cost_id'];
+			$one_result['article_text'] = $value['article_text'];
+			$one_result['text_language_code'] = $value['text_language_code'];
+			$one_result['post_timestamp'] = $value['created_at'];
+			$one_result['star'] = $value['average_star'];
+			$one_result['like_number'] = $value['like_number'];
+			$search_results[] = $one_result;
+		}
+
+		return array('search_result_count' => $result_cnt['cnt'], 
+					'search_results' => $search_results,
+				);
+	}
 
 	/**
 	 *
