@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PostListController : UIViewController
+@interface PostListController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    UICollectionView *collect_Article;
+    NSArray *arr_artices;
+}
 
 @end

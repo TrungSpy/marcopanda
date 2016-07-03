@@ -30,6 +30,7 @@
 		52B044761D27EC6D001F55C5 /* MakerInfoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B044751D27EC6D001F55C5 /* MakerInfoButton.m */; };
 		52DC89A71D28752D0031C944 /* SelectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DC89A61D28752D0031C944 /* SelectItem.m */; };
 		52DC89AA1D28772D0031C944 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DC89A91D28772D0031C944 /* HomeViewController.m */; };
+		52DC89AD1D28B2750031C944 /* ArticleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DC89AC1D28B2750031C944 /* ArticleViewCell.m */; };
 		E1F80131AED5EB8BB13786AF /* libPods-marcopandaios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		52DC89A61D28752D0031C944 /* SelectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectItem.m; path = view/parts/SelectItem.m; sourceTree = "<group>"; };
 		52DC89A81D28772D0031C944 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = view/HomeViewController.h; sourceTree = "<group>"; };
 		52DC89A91D28772D0031C944 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = view/HomeViewController.m; sourceTree = "<group>"; };
+		52DC89AB1D28B2750031C944 /* ArticleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleViewCell.h; path = view/parts/ArticleViewCell.h; sourceTree = "<group>"; };
+		52DC89AC1D28B2750031C944 /* ArticleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleViewCell.m; path = view/parts/ArticleViewCell.m; sourceTree = "<group>"; };
 		A71C2E884F32E45EA3C37DBA /* Pods-marcopandaios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marcopandaios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-marcopandaios/Pods-marcopandaios.debug.xcconfig"; sourceTree = "<group>"; };
 		AF13DD561EBFE48013675D71 /* libPods-marcopandaios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-marcopandaios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -216,6 +219,8 @@
 				527FA9641D28232C00A542FC /* SearchView.m */,
 				52DC89A51D28752D0031C944 /* SelectItem.h */,
 				52DC89A61D28752D0031C944 /* SelectItem.m */,
+				52DC89AB1D28B2750031C944 /* ArticleViewCell.h */,
+				52DC89AC1D28B2750031C944 /* ArticleViewCell.m */,
 			);
 			name = parts;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 				5214F6D41D275FDE00ACC644 /* ViewController.m in Sources */,
 				52B044601D27968B001F55C5 /* SideMenu.m in Sources */,
 				5214F7081D2785B000ACC644 /* MenuHeaderCell.m in Sources */,
+				52DC89AD1D28B2750031C944 /* ArticleViewCell.m in Sources */,
 				5214F6D11D275FDE00ACC644 /* AppDelegate.m in Sources */,
 				5214F6FD1D27822700ACC644 /* MenuCell.m in Sources */,
 				52DC89AA1D28772D0031C944 /* HomeViewController.m in Sources */,

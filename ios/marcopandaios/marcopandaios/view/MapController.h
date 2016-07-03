@@ -22,6 +22,9 @@
     __block NSString *center_adress;
     
     UIButton *btn_send;
+    
+    BOOL isRefresh;
+
 }
 
 //GPS関連モジュール

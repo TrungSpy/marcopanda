@@ -28,8 +28,9 @@
 
 
 
--(id)initWithFrame:(CGRect)frame withTitle:(NSString *)title withCategory:(NSInteger)type withMarkerid:(NSString *)markerid;
+-(id)initWithFrame:(CGRect)frame withTitle:(NSString *)title withCategory:(NSInteger)type withMarkerid:(NSString *)markerid withhosi:(NSInteger)count;
 
 -(void)setIconHotFactor:(CIColor *)factor_color withCategory:(NSInteger)type;
+-(void)setInfoViewHidden:(BOOL)hidden;
 
 @end

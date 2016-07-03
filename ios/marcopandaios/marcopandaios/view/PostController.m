@@ -10,7 +10,7 @@
 
 
 @implementation PostController
-@synthesize coordinate,adress;
+@synthesize coordinate,adress,type;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +45,7 @@
     img_Message.layer.cornerRadius=5;
     img_Message.contentMode = UIViewContentModeScaleAspectFit;
     img_Message.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [img_Message setImage:[UIImage imageNamed:@"select"] forState:UIControlStateNormal];
+    [img_Message setImage:[UIImage imageNamed:@"tmppic"] forState:UIControlStateNormal];
     [img_Message addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
     img_Message.backgroundColor=[UIColor clearColor];
     [sc_contents addSubview:img_Message];
@@ -154,6 +154,8 @@
                                 [NSLayoutConstraint constraintWithItem:tf_sex attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:30]
                                 ]];
 
+    if(type==0)
+    {
     btn_add=[UIButton buttonWithType:UIButtonTypeCustom];
     [btn_add setTitle:@"追加" forState:UIControlStateNormal];
     [btn_add addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
@@ -169,6 +171,7 @@
                                 [NSLayoutConstraint constraintWithItem:btn_add attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0],
                                 [NSLayoutConstraint constraintWithItem:btn_add attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:50]
                                 ]];
+    }
     sc_contents.contentSize=CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.width-30+40*4+120+240);
     
 }
@@ -252,7 +255,7 @@
     }
     else{
         NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
-        [AFNetHelper requestPath:@"/article/post.json" withMethod:AFPOST withParms:@{@"longitude":@(coordinate.longitude),@"latitude":@(coordinate.latitude),@"location_name":adress,@"user_uuid":userid,@"nickname":tf_name.text,@"category_id":@(cur_category_index),@"cost_id":@(cur_cost_index),@"sex":@(cur_sex_index),@"article_text":txt_Message.text,@"text_language_code":language} withBlock:^(id result, NSError *error) {
+        [AFNetHelper requestPath:@"/article/post.json" withMethod:AFPOST withParms:@{@"longitude":@(coordinate.longitude),@"latitude":@(coordinate.latitude),@"location_name":adress,@"user_uuid":userid,@"nickname":tf_name.text,@"category_id":@(cur_category_index),@"cost_id":@(cur_cost_index),@"sex":@(cur_sex_index),@"article_text":txt_Message.text,@"text_language_code":language} withBlock:^(id resulaat, NSError *error) {
 //            NSLog(@"re%@",[result description]);
             [self.navigationController popViewControllerAnimated:YES];
             
