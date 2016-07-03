@@ -31,4 +31,5 @@
 
 //共有データモジュールを初期化
 +(MarcoPandaData *)sharedDataSource;
++(void)setLocalValue:(void (^)())block;
 @end

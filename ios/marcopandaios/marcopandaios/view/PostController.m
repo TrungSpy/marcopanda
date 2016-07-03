@@ -41,8 +41,12 @@
     
     
     img_Message=[[UIButton alloc]initWithFrame:CGRectZero];
+    img_Message.layer.masksToBounds=YES;
+    img_Message.layer.cornerRadius=5;
     img_Message.contentMode = UIViewContentModeScaleAspectFit;
-    [img_Message setImage:[UIImage imageNamed:@"select"]];
+    img_Message.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [img_Message setImage:[UIImage imageNamed:@"select"] forState:UIControlStateNormal];
+    [img_Message addTarget:self action:@selector(takePicture) forControlEvents:UIControlEventTouchUpInside];
     img_Message.backgroundColor=[UIColor clearColor];
     [sc_contents addSubview:img_Message];
     img_Message.translatesAutoresizingMaskIntoConstraints=NO;
@@ -55,6 +59,7 @@
     
     tf_name = [[UITextField alloc]initWithFrame:CGRectZero];
     tf_name.placeholder=@"お名前を入力してください";
+    tf_name.font=W3FONT(15);
     tf_name.layer.masksToBounds=YES;
     tf_name.layer.cornerRadius=5;
     tf_name.delegate = self;
@@ -66,7 +71,7 @@
                                 [NSLayoutConstraint constraintWithItem:tf_name attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:img_Message attribute:NSLayoutAttributeBottom multiplier:1.0 constant:20],
                                 [NSLayoutConstraint constraintWithItem:tf_name attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:30],
                                 [NSLayoutConstraint constraintWithItem:tf_name attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:-30],
-                                [NSLayoutConstraint constraintWithItem:tf_name attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:20]
+                                [NSLayoutConstraint constraintWithItem:tf_name attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:30]
                                 ]];
 
     
@@ -86,9 +91,15 @@
                                 [NSLayoutConstraint constraintWithItem:txt_Message attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:100]
                                 ]];
     
+    
+    arr_Categorys = @[@"温泉",@"レストラン",@"ホテル",@"観光スポット",@"交通",@"ショッピング",@"イベント",@"公共施設",@"アミューズメント",@"病院",@"その他"];
     tf_Category = [[UITextField alloc]initWithFrame:CGRectZero];
     tf_Category.userInteractionEnabled=NO;
-    tf_Category.text=@"温泉";
+    
+    cur_category_index =(NSInteger)arc4random()%11+1;
+    tf_Category.text=[arr_Categorys objectAtIndex:cur_category_index-1];
+    
+    tf_Category.font=W3FONT(15);
     tf_Category.layer.masksToBounds=YES;
     tf_Category.layer.cornerRadius=5;
     [sc_contents addSubview:tf_Category];
@@ -99,14 +110,18 @@
                                 [NSLayoutConstraint constraintWithItem:tf_Category attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:txt_Message attribute:NSLayoutAttributeBottom multiplier:1.0 constant:20],
                                 [NSLayoutConstraint constraintWithItem:tf_Category attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:30],
                                 [NSLayoutConstraint constraintWithItem:tf_Category attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:-30],
-                                [NSLayoutConstraint constraintWithItem:tf_Category attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:20]
+                                [NSLayoutConstraint constraintWithItem:tf_Category attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:30]
                                 ]];
     
+    arr_costs = @[@"¥0",@"¥1〜¥1,000",@"¥1,001〜¥2,000",@"¥2,001〜¥5,000",@"¥5,001〜¥10,000",@"¥10,001〜"];
     tf_cost = [[UITextField alloc]initWithFrame:CGRectZero];
     tf_cost.userInteractionEnabled=NO;
     tf_cost.layer.masksToBounds=YES;
     tf_cost.layer.cornerRadius=5;
-    tf_cost.text = @"¥1〜¥1,000";
+    
+    cur_cost_index =(NSInteger)arc4random()%6+1;
+    tf_cost.text = [arr_costs objectAtIndex:cur_cost_index-1];
+    tf_cost.font=W3FONT(15);
     [sc_contents addSubview:tf_cost];
     tf_cost.translatesAutoresizingMaskIntoConstraints=NO;
     tf_cost.backgroundColor=[UIColor whiteColor];
@@ -115,11 +130,16 @@
                                 [NSLayoutConstraint constraintWithItem:tf_cost attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:tf_Category attribute:NSLayoutAttributeBottom multiplier:1.0 constant:20],
                                 [NSLayoutConstraint constraintWithItem:tf_cost attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:30],
                                 [NSLayoutConstraint constraintWithItem:tf_cost attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:-30],
-                                [NSLayoutConstraint constraintWithItem:tf_cost attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:20]
+                                [NSLayoutConstraint constraintWithItem:tf_cost attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:30]
                                 ]];
     
+    arr_sex = @[@"男性",@"女性",@"不明"];
     tf_sex = [[UITextField alloc]initWithFrame:CGRectZero];
-    tf_sex.text = @"女性";
+    
+    cur_sex_index =(NSInteger)arc4random()%3+1;
+    tf_sex.text = [arr_sex objectAtIndex:cur_sex_index-1];
+    
+    tf_sex.font=W3FONT(15);
     tf_sex.userInteractionEnabled=NO;
     tf_sex.layer.masksToBounds=YES;
     tf_sex.layer.cornerRadius=5;
@@ -131,11 +151,12 @@
                                 [NSLayoutConstraint constraintWithItem:tf_sex attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:tf_cost attribute:NSLayoutAttributeBottom multiplier:1.0 constant:20],
                                 [NSLayoutConstraint constraintWithItem:tf_sex attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:30],
                                 [NSLayoutConstraint constraintWithItem:tf_sex attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:-30],
-                                [NSLayoutConstraint constraintWithItem:tf_sex attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:20]
+                                [NSLayoutConstraint constraintWithItem:tf_sex attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:30]
                                 ]];
 
     btn_add=[UIButton buttonWithType:UIButtonTypeCustom];
     [btn_add setTitle:@"追加" forState:UIControlStateNormal];
+    [btn_add addTarget:self action:@selector(sendMessage) forControlEvents:UIControlEventTouchUpInside];
     btn_add.layer.masksToBounds=YES;
     btn_add.layer.cornerRadius=5;
     [sc_contents addSubview:btn_add];
@@ -148,7 +169,7 @@
                                 [NSLayoutConstraint constraintWithItem:btn_add attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0],
                                 [NSLayoutConstraint constraintWithItem:btn_add attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:50]
                                 ]];
-    sc_contents.contentSize=CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.width-30+40*4+120+190);
+    sc_contents.contentSize=CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.width-30+40*4+120+240);
     
 }
 
@@ -193,4 +214,51 @@
     [tf_name resignFirstResponder];
 }
 
+-(void)takePicture
+{
+    UIImagePickerController *photoview=[[UIImagePickerController alloc]init];
+    photoview.delegate = self;
+    photoview.allowsEditing=YES;
+    photoview.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:photoview animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker  didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    uploadimage = [info objectForKey:UIImagePickerControllerEditedImage];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [img_Message setImage:uploadimage forState:UIControlStateNormal];
+    }];
+    
+}
+
+-(void)sendMessage
+{
+    NSString *userid=[[NSUserDefaults standardUserDefaults]objectForKey:@"user_id"];
+    if(uploadimage)
+    {
+        [AFNetHelper uploadPath:@"/article/fileupload.json" withMethod:AF_IMAGE withParms:nil withFormdata:@{@"image":UIImagePNGRepresentation(uploadimage)} withBlock:^(id result, NSError *error) {
+//            NSLog(@"re%@",[result description]);
+            if(error == nil)
+            {
+                NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+                [AFNetHelper requestPath:@"/article/post.json" withMethod:AFPOST withParms:@{@"longitude":@(coordinate.longitude),@"latitude":@(coordinate.latitude),@"location_name":adress,@"user_uuid":userid,@"nickname":tf_name.text,@"category_id":@(cur_category_index),@"cost_id":@(cur_cost_index),@"sex":@(cur_sex_index),@"article_text":txt_Message.text,@"text_language_code":language,@"multimedia_id":@[result[@"files"][0][@"multimedia_id"]]} withBlock:^(id result, NSError *error) {
+//                    NSLog(@"re%@",[result description]);
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                
+            }
+        }];
+    }
+    else{
+        NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+        [AFNetHelper requestPath:@"/article/post.json" withMethod:AFPOST withParms:@{@"longitude":@(coordinate.longitude),@"latitude":@(coordinate.latitude),@"location_name":adress,@"user_uuid":userid,@"nickname":tf_name.text,@"category_id":@(cur_category_index),@"cost_id":@(cur_cost_index),@"sex":@(cur_sex_index),@"article_text":txt_Message.text,@"text_language_code":language} withBlock:^(id result, NSError *error) {
+//            NSLog(@"re%@",[result description]);
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }];
+        
+    }
+    
+}
 @end

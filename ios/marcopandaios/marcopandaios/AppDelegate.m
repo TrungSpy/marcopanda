@@ -22,6 +22,23 @@
     //googleサービス関連キー設定(初期化)
     [MarcoPandaData sharedDataSource];
     [GMSServices provideAPIKey:@"AIzaSyBlQyO5a3uYxYlZ9XD0szlF8gTkf-y-yHg"];
+    
+    if(![[NSUserDefaults standardUserDefaults]objectForKey:@"user_id"])
+    {
+        [MarcoPandaData setLocalValue:^{
+            __block NSString * userid = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+            
+            [AFNetHelper requestPath:@"/user/uuid_regist.json" withMethod:AFPOST withParms:@{@"user_uuid":userid} withBlock:^(id result, NSError *error) {
+               if(!error)
+               {
+                  
+               }
+            }];
+            [[NSUserDefaults standardUserDefaults]setObject:userid forKey:@"user_id"];
+            
+        }];
+        
+    }
     return YES;
 }
 

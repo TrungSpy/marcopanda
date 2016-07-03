@@ -39,4 +39,13 @@ static MarcoPandaData *datas;
     }
     return self;
 }
+
++(void)setLocalValue:(void (^)())block{
+    if(block)
+    {
+        block();
+    }
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
 @end
